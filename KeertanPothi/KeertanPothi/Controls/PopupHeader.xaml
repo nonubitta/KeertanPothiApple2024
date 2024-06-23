@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="KeertanPothi.Controls.PopupHeader">
+   <StackLayout Orientation="Horizontal" HeightRequest="40" Padding="0" Margin="0,0,0,0" StyleClass="DarkBlueBg" HorizontalOptions="Fill">
+        <Button IsEnabled="False" Text="" HeightRequest="30" HorizontalOptions="End" WidthRequest="30" Padding="0"></Button>
+        <Label x:Name="lblTitle" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
+               Text="Assign Title" TextColor="White" FontSize="Medium"></Label>
+        <Button Text="X" Clicked="btnSave_Clicked" HeightRequest="30" HorizontalOptions="End" WidthRequest="30" Padding="0"></Button>
+    </StackLayout>
+</ContentView>

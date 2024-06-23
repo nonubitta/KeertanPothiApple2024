@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KeertanPothi.Views.RaagShabadList" BackgroundColor="{Binding PageBg}">
+    <StackLayout>
+        <ListView BackgroundColor="Transparent" x:Name="lstVerse" HasUnevenRows="True" VerticalOptions="FillAndExpand" ItemSelected="lstVerse_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout VerticalOptions="Center" Padding="20, 5, 20, 5">
+                            <Label TextColor="{Binding PageBgTheme.FontColor}" Text="{Binding Gurmukhi}" FontFamily="PunjabiFont" StyleClass="MainText"></Label>
+                            <StackLayout Orientation="Horizontal" Spacing="2">
+                                <Label TextColor="{Binding PageBgTheme.EnglishTranslationColor}" Text="By " FontSize="11"></Label>
+                                <Label StyleClass="CommonThemeOrange" FontAttributes="Bold" Text="{Binding WriterEnglish}" FontSize="11"></Label>
+                                <Label TextColor="{Binding PageBgTheme.EnglishTranslationColor}" Text=" in " FontSize="11"></Label>
+                                <Label TextColor="Orange" FontAttributes="Bold" Text="{Binding RaagEnglish}" FontSize="11"></Label>
+                                <Label TextColor="{Binding PageBgTheme.EnglishTranslationColor}" Text=" on " FontSize="11"></Label>
+                                <Label TextColor="{Binding PageBgTheme.EnglishTranslationColor}" Text=" Ang " FontSize="11" FontAttributes="Bold" ></Label>
+                                <Label TextColor="{Binding PageBgTheme.EnglishTranslationColor}"  Text="{Binding PageNo}" FontSize="11" FontAttributes="Bold" ></Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" Title="Similar Shabads"
+             x:Class="KeertanPothi.Views.SimilarShabad" BackgroundColor="{Binding PageBg}">
+    <ContentPage.Content>
+        <StackLayout Padding="20, 10">
+            <StackLayout VerticalOptions="Start" HeightRequest="60">
+                <Label Text="** Tap keywords to search for **" HorizontalTextAlignment="Center" TextColor="{Binding FontColor}"></Label>
+                <CollectionView x:Name="cvVerse" ItemsLayout="HorizontalList" SelectionMode="Multiple" SelectionChanged="cvVerse_SelectionChanged"  >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="5">
+                                <Label Text="{Binding Item}" FontFamily="PunjabiFont" TextColor="{Binding PageBgTheme.FontColor}" FontSize="24"></Label>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+            <Button x:Name="btnSearch" Text="Search" IsEnabled="False" Clicked="Search_Clicked"></Button>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <ListView BackgroundColor="Transparent" x:Name="lstVerse" HasUnevenRows="True" VerticalOptions="FillAndExpand" ItemSelected="lstVerse_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout VerticalOptions="Center" Padding="0, 5, 0, 5">
+                                    <Label TextColor="{Binding PageBgTheme.FontColor}" Text="{Binding Gurmukhi}" FontFamily="PunjabiFont" FontSize="24"></Label>
+                                    <StackLayout Orientation="Horizontal" Spacing="2">
+                                        <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="By " FontSize="11"></Label>
+                                        <Label StyleClass="CommonThemeOrange" FontAttributes="Bold" Text="{Binding WriterEnglish}" FontSize="11"></Label>
+                                        <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text=" in " FontSize="11"></Label>
+                                        <Label  TextColor="Orange" FontAttributes="Bold" Text="{Binding RaagEnglish}" FontSize="11"></Label>
+                                        <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text=" on " FontSize="11"></Label>
+                                        <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text=" Ang " FontSize="11" FontAttributes="Bold" ></Label>
+                                        <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}"  Text="{Binding PageNo}" FontSize="11" FontAttributes="Bold" ></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

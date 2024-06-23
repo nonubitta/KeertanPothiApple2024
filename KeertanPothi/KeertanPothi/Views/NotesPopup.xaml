@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:local="clr-namespace:KeertanPothi.Controls"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             x:Class="KeertanPothi.Views.NotesPopup">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True" >
+        </animations:ScaleAnimation>
+    </pages:PopupPage.Animation>
+    <ContentPage.Content>
+        <ScrollView Padding="20,10,20,80" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Frame CornerRadius="10" Padding="0" BackgroundColor="{Binding PageBg}" BorderColor="#1976D2">
+                <Grid BackgroundColor="{Binding PageBg}" ColumnDefinitions="*" RowDefinitions="40,*, 80">
+                    <local:PopupHeader Title="Notes"></local:PopupHeader>
+                    <Editor Margin="20,0,20,0" Grid.Column="0" Grid.Row="1" x:Name="editNote" TextColor="{Binding FontColor}"></Editor>
+                    <StackLayout Grid.Column="0" Grid.Row="2" Spacing="0" Padding="20,0,20,20">
+                        <StackLayout Orientation="Horizontal">
+                            <Button Text="Save" HorizontalOptions="StartAndExpand" Clicked="btnSave_Clicked"></Button>
+                            <Button Text="Delete" BackgroundColor="Red" HorizontalOptions="End" Clicked="btnDelete_Clicked"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+        </ScrollView>
+    </ContentPage.Content>
+</pages:PopupPage>

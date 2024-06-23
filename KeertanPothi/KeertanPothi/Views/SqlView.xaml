@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KeertanPothi.Views.SqlView">
+    <ContentPage.Content>
+        <StackLayout Padding="10,0,10,0">
+            <StackLayout x:Name="slEdit">
+                <Editor x:Name="edtSql" HeightRequest="300" 
+                        Text="
+                        SELECT * FROM POTHISHABAD PS INNER JOIN SHABAD SH ON PS.SHABADID = SH.SHABADID
+                        WHERE SH.VERSEID = (SELECT MIN(VERSEID) FROM SHABAD SHI WHERE SHI.SHABADID = SH.SHABADID)
+                        " />
+            </StackLayout>
+            <Button x:Name="btnRun" Text="Run" Clicked="Run_Clicked"></Button>
+            <ListView BackgroundColor="Transparent" x:Name="lstShabad" HasUnevenRows="True" SelectionMode="None" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout VerticalOptions="StartAndExpand"  Padding="20, 5, 20, 5" Spacing="3">
+                                <Label Text="{Binding Gurmukhi}" 
+                                       FontFamily="PunjabiFont"></Label>
+                                <Label Text="{Binding pothiId}" ></Label>
+                                <Label Text="{Binding ShabadId}" ></Label>
+                                <Label Text="{Binding VerseId}" ></Label>
+                                <Label Text="{Binding Id}" ></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

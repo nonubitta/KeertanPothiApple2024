@@ -1,0 +1,100 @@
+
+CREATE TABLE BaniName (
+  Id INTEGER,
+  PunjabiName Text,
+  EnglishName Text,
+  IsVisible bool,
+  Visible integer
+  );
+
+INSERT INTO BaniName VALUES (1, 'jpjI swihb', 'Japji Sahib', true, 1);
+INSERT INTO BaniName VALUES (2, 'jwpu swihb', 'Jaap Sahib', true, 1);
+INSERT INTO BaniName VALUES (3, 'qÍ pRswid ] sv`Xy ]', 'Tav Prasad  Savayiye', true, 1);
+INSERT INTO BaniName VALUES (4, 'bynqI cOpeI', 'Benti Chaupai', true, 1);
+INSERT INTO BaniName VALUES (5, 'Anµdu swihb', 'Anand Sahib', true, 1);
+INSERT INTO BaniName VALUES (6, 'rhrwis swihb', 'Rehraas Sahib', true, 1);
+INSERT INTO BaniName VALUES (7, 'soihlw swihb', 'Sohila Sahib', true, 1);
+INSERT INTO BaniName VALUES (8, 'suKmnI swihb', 'Sukhmani Sahib', true, 1);
+
+
+INSERT INTO BaniName VALUES (9, 'AwrqI', 'Aarti', true, 1);
+INSERT INTO BaniName VALUES (10, 'Sbd hzwry', 'Shabad Hazare', true, 1);
+INSERT INTO BaniName VALUES (11, 'Bwrh mwhw mwNJ', 'Baarah Mah Majh', true, 1);
+INSERT INTO BaniName VALUES (12, 'slok mhlw 9', 'Salok Mehla 9', true, 1);
+INSERT INTO BaniName VALUES (13, 'kucjI', 'Kuchajji', true, 1);
+INSERT INTO BaniName VALUES (14, 'sucjI', 'Suchajji', true, 1);
+INSERT INTO BaniName VALUES (15, 'guxvMqI', 'Gunvanti', true, 1);
+INSERT INTO BaniName VALUES (16, 'bsMq kI vwr', 'Basant Ki Vaar', true, 1);
+INSERT INTO BaniName VALUES (17, 'rwmklI kI vwr', 'Raamkali Ki Vaar', true, 1);
+INSERT INTO BaniName VALUES (18, 'Awsw', 'Asa Di Vaar', true, 1);
+
+
+insert into Nitnem
+SELECT 11 as id, 1 as sort, id as verseid
+from sggsvw
+where shabadid = 358;
+
+insert into Nitnem
+SELECT 12 as id, 1 as sort, id as verseid
+from sggsvw
+where shabadid 
+between 5481 and 5537;
+
+insert into Nitnem
+SELECT 13 as id, 1 as sort, id as verseid
+from sggsvw
+where shabadid 
+= 2881;
+
+insert into Nitnem
+SELECT 14 as id, 1 as sort, id as verseid
+from sggsvw
+where shabadid 
+= 2882;
+
+insert into Nitnem
+SELECT 15 as id, 1 as sort, id as verseid
+from sggsvw
+where shabadid 
+= 2883;
+
+insert into Nitnem
+SELECT 16 as id, 1 as sort, id as verseid
+from sggsvw
+where shabadid 
+= 4234;
+
+insert into Nitnem
+SELECT 17 as id, 1 as sort, id as verseid
+from sggsvw
+where shabadid
+between 3584 and 3591;
+
+insert into Nitnem
+SELECT 19 as id, 1 as sort, id as verseid
+from sggsvw
+where shabadid 
+= 4967;
+
+insert into Nitnem
+SELECT 20 as id, 1 as sort, id as verseid
+from sggsvw
+where shabadid 
+= 4968;
+
+
+insert into BaniBookmark -- (BaniId, VerseId, sort)
+select baniid, verseid, text || rownum, rownum from (
+SELECT 8 baniid, s.id verseid, 'AstpdI ' text,  ROW_NUMBER () OVER ( 
+        ORDER BY s.id 
+    ) RowNum FROM Nitnem n inner join sggsvw s on n.verseid = s.id 
+where n.id = 8
+and gurmukhi = 'sloku ]'
+order by n.sort
+) a
+
+--SELECT 2, s.Id FROM Nitnem n inner join sggsvw s on n.verseid = s.id 
+--where n.id = 2
+--GROUP BY n.sort
+--HAVING MIN(s.ID)
+;

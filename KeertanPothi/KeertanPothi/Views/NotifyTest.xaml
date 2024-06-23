@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:KeertanPothi.MarkupExtension"
+             x:Class="KeertanPothi.Views.NotifyTest" NavigationPage.HasNavigationBar="True">
+    <StackLayout>
+        <StackLayout Padding="10, 10, 10, 10">
+            <Label x:Name="lblDbVersion"></Label>
+            <ListView VerticalOptions="FillAndExpand" BackgroundColor="Transparent" x:Name="lstWriter" RowHeight="70"  >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout VerticalOptions="Center" Spacing="1" Padding="20, 5, 20, 5">
+                                <Label StyleClass="MainText" Text="{Binding Content}" ></Label>
+                                <Label StyleClass="SecondaryText" Text="{Binding Description}" FontSize="14" ></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        <StackLayout x:Name="BottomToolbar" HeightRequest="50" StyleClass="DarkBlueBg" Opacity="1" AbsoluteLayout.LayoutBounds="0,1,1,50" 
+                     AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional" Orientation="Horizontal" 
+                     VerticalOptions="End" Padding="20,0,20,0">
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Prev" HorizontalOptions="StartAndExpand"></Button>
+                <Button HorizontalOptions="End" Text="Next"></Button>
+            </StackLayout>
+        </StackLayout>
+        <!--<StackLayout IsVisible="False" BackgroundColor="#2196f3" x:Name="EditToolbar" Padding="10,20,10,10" Margin="0">
+            <Grid x:Name="controlGrid2" RowSpacing="1" ColumnSpacing="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button StyleClass="KeyboardBtn" Text="a" Grid.Row="0" Grid.Column="0"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "A" Grid.Row="0" Grid.Column="1"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "e" Grid.Row="0" Grid.Column="2"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "s" Grid.Row="0" Grid.Column="3"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "h" Grid.Row="0" Grid.Column="4"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "q" Grid.Row="0" Grid.Column="5"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "Q" Grid.Row="0" Grid.Column="6"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "d" Grid.Row="0" Grid.Column="7"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "D" Grid.Row="0" Grid.Column="8"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "n" Grid.Row="0" Grid.Column="9"
+                        FontFamily="PunjabiFont" />
+
+                <Button StyleClass="KeyboardBtn" Text="k" Grid.Row="1" Grid.Column="0"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "K" Grid.Row="1" Grid.Column="1"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "g" Grid.Row="1" Grid.Column="2"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "G" Grid.Row="1" Grid.Column="3"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "|" Grid.Row="1" Grid.Column="4"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "p" Grid.Row="1" Grid.Column="5"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "F" Grid.Row="1" Grid.Column="6"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "b" Grid.Row="1" Grid.Column="7"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "B" Grid.Row="1" Grid.Column="8"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "m" Grid.Row="1" Grid.Column="9"
+                        FontFamily="PunjabiFont" />
+
+                <Button StyleClass="KeyboardBtn" Text="c" Grid.Row="2" Grid.Column="0"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "C" Grid.Row="2" Grid.Column="1"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "j" Grid.Row="2" Grid.Column="2"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "J" Grid.Row="2" Grid.Column="3"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "\" Grid.Row="2" Grid.Column="4"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "X" Grid.Row="2" Grid.Column="5"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "r" Grid.Row="2" Grid.Column="6"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "l" Grid.Row="2" Grid.Column="7"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "v" Grid.Row="2" Grid.Column="8"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "V" Grid.Row="2" Grid.Column="9"
+                        FontFamily="PunjabiFont" />
+
+                <Button StyleClass="KeyboardBtn" Text="t" Grid.Row="3" Grid.Column="0"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "T" Grid.Row="3" Grid.Column="1"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "f" Grid.Row="3" Grid.Column="2"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "F" Grid.Row="3" Grid.Column="3"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "\" Grid.Row="3" Grid.Column="4"
+            FontFamily="PunjabiFont" />
+                --><!--<Button StyleClass="KeyboardBtn" Text = "X" Grid.Row="3" Grid.Column="5"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "r" Grid.Row="3" Grid.Column="6"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "l" Grid.Row="3" Grid.Column="7"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "v" Grid.Row="3" Grid.Column="8"
+            FontFamily="PunjabiFont" />--><!--
+                <Button StyleClass="KeyboardBtn" Text = "" Grid.Row="3" Grid.Column="9"
+                        FontFamily="PunjabiFont" />
+
+                <Button StyleClass="KeyboardBtn" Text="123" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "Space" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="6" />
+                <Button StyleClass="KeyboardBtn" Text="Search" Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2" />
+                --><!--<Button StyleClass="KeyboardBtn" Text = "F" Grid.Row="3" Grid.Column="3"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "\" Grid.Row="3" Grid.Column="4"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "X" Grid.Row="3" Grid.Column="5"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "r" Grid.Row="3" Grid.Column="6"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "l" Grid.Row="3" Grid.Column="7"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "v" Grid.Row="3" Grid.Column="8"
+            FontFamily="PunjabiFont" />
+                <Button StyleClass="KeyboardBtn" Text = "" Grid.Row="3" Grid.Column="9"
+                        FontFamily="PunjabiFont" />--><!--
+
+            </Grid>
+        </StackLayout>-->
+    </StackLayout>
+
+</ContentPage>

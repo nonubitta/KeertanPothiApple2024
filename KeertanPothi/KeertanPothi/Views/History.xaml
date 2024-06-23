@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KeertanPothi.Views.History" BackgroundColor="{Binding PageBg}">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView BackgroundColor="Transparent" x:Name="lstVerse" HasUnevenRows="True" VerticalOptions="FillAndExpand"
+                      ItemSelected="lstVerse_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="10, 5, 10, 5">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="2" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Spacing="0" Grid.Row="0" Grid.Column="0" >
+                                        <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="{Binding CreatedOn, StringFormat='{0:dd MMM}'}" FontSize="12" FontAttributes="Bold" ></Label>
+                                        <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="{Binding CreatedOn, StringFormat='{0:yyyy }'}" FontSize="12" FontAttributes="Bold" ></Label>
+                                        <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="{Binding CreatedOn, StringFormat='{0:H:mm}'}" FontSize="12" FontAttributes="Bold" ></Label>
+                                    </StackLayout>
+                                    <StackLayout VerticalOptions="Center" Grid.Row="0" Grid.Column="2" >
+                                        <Label TextColor="{Binding PageBgTheme.FontColor}" Text="{Binding Gurmukhi}" FontFamily="PunjabiFont" FontSize="24"></Label>
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="By " FontSize="11"></Label>
+                                            <Label StyleClass="CommonThemeOrange" FontAttributes="Bold" Text="{Binding WriterEnglish}" FontSize="11"></Label>
+                                            <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text=" in " FontSize="11"></Label>
+                                            <Label TextColor="Orange" FontAttributes="Bold" Text="{Binding RaagEnglish}" FontSize="11"></Label>
+                                            <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text=" on " FontSize="11"></Label>
+                                            <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="Ang " FontSize="11" FontAttributes="Bold" ></Label>
+                                            <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" LineBreakMode="NoWrap" Text="{Binding PageNo}" FontSize="11" FontAttributes="Bold" ></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

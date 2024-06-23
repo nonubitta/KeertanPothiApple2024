@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KeertanPothi.Views.Help">
+    <AbsoluteLayout Padding="20, 20, 20, 20">
+        <CarouselView x:Name="crvData"
+                      AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout HorizontalOptions="StartAndExpand"
+                       VerticalOptions="StartAndExpand" >
+                        <Frame HasShadow="True"
+                       BorderColor="DarkGray"
+                       CornerRadius="10" Padding="0"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand">
+                            <StackLayout VerticalOptions="FillAndExpand">
+                                <Label FontSize="Large" Text="{Binding ImgText}" HorizontalOptions="Center" />
+                                <Frame BorderColor="DarkBlue" Margin="20">
+                                    <Image Source="{Binding ImgSource}"></Image>
+                                </Frame>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        <!--<IndicatorView AbsoluteLayout.LayoutBounds="0.5, 1, 1, 1" AbsoluteLayout.LayoutFlags="All" x:Name="indicatorView"
+                   IndicatorColor="DarkGray"
+                   SelectedIndicatorColor="Black"
+                   HorizontalOptions="Center" />-->
+    </AbsoluteLayout>
+</ContentPage>

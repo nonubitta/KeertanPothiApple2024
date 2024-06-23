@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:KeertanPothi.Controls"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             x:Class="KeertanPothi.Views.EditBaniList">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True" >
+        </animations:ScaleAnimation>
+    </pages:PopupPage.Animation>
+    <ContentPage.Content>
+        <Frame BackgroundColor="{Binding PageBg}" BorderColor="#1976D2" HasShadow="True" CornerRadius="10" Margin="20,10,20,20" VerticalOptions="Center">
+            <StackLayout Spacing="2" Margin="0" BackgroundColor="{Binding PageBg}">
+                <local:PopupHeader Title="Gurbani List"></local:PopupHeader>
+                <StackLayout Padding="20" Spacing="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Button HorizontalOptions="FillAndExpand" Padding="0" HeightRequest="40" Text="Select All" Clicked="AddAll_Clicked"></Button>
+                        <Button HorizontalOptions="FillAndExpand" HeightRequest="40" Text="Remove All" Clicked="RemoveAll_Clicked"></Button>
+                    </StackLayout>
+                    <ListView BackgroundColor="Transparent" HasUnevenRows="True" VerticalOptions="FillAndExpand" x:Name="lstNitnem" SelectionMode="None">
+                        <ListView.Header>
+                            <StackLayout>
+                                <Label Text="* Banis can be removed and added back from here" FontSize="Micro" FontAttributes="Italic"
+                                    TextColor="{Binding PunjabiTranslationColor}" HorizontalOptions="CenterAndExpand"></Label>
+                            </StackLayout>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Padding="20,5,20,5" Orientation="Horizontal">
+                                        <StackLayout HorizontalOptions="StartAndExpand">
+                                            <Label TextColor="{Binding PageBgTheme.FontColor}" Text="{Binding PunjabiName}" FontSize="24" FontFamily="PunjabiFont"></Label>
+                                            <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="{Binding EnglishName}" FontSize="14" ></Label>
+                                        </StackLayout>
+                                        <Switch IsToggled="{Binding IsVisible}" Toggled="Bani_Toggled"></Switch>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button Padding="0" HeightRequest="40" Text="Close" x:Name="btnClose" Clicked="btnClose_Clicked"></Button>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</pages:PopupPage>
+
+                    

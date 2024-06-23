@@ -1,0 +1,82 @@
+﻿/*^ContentPage {
+    background-color: #cfe2f3;
+}*/
+
+^Frame {
+    background-color: #cfe2f3;
+}
+
+.LightBlueBg {
+    background-color: #cfe2f3;
+}
+
+^Button {
+    background-color: #1976D2; /*174479*/
+    color: #FFFFFF;
+    font-size: small;
+    border-radius: 5;
+    padding:15;
+}
+
+^Picker {
+    background-color: #606060;
+    TextColor: White;
+}
+
+^RadioButton {
+    padding: 15;
+}
+
+.NoRadiusButton {
+    border-radius: 0;
+}
+
+^SwipeView {
+    background-color: #cfe2f3;
+}
+
+.MainText {
+    color:darkblue;
+    font-size:26;
+}
+
+.SecondaryText {
+    color: #313439;
+}
+
+.SecondaryTextAlt {
+    color: #255fbc;
+}
+
+.DarkBlueBg {
+    background-color: #1976D2;
+}
+
+.DarkBlueFont {
+    color: #1976D2;
+}
+
+.KeyboardBtn {
+    padding: 0 0 0 0;
+    background-color: #606060;
+    font-size:large;
+}
+
+.MenuBlackBg {
+    background-color: #484d57;
+}
+
+.MenuWhiteText {
+    color: #eef0f1;
+}
+
+.CommonThemeOrange {
+    color: #f97b4d;
+}
+
+.NoPad{
+    padding:0;
+    margin:0;
+}
+
+/*icon-bg outside #3F51B5 inside B3E5FC*/

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KeertanPothi.App">
+    <Application.Resources>
+        <!--<ResourceDictionary>
+            <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+                <On Platform="Android" Value="gurbaniwebthick.ttf#gurbaniwebthick" />
+                <On Platform="UWP" Value="/Assets/gurbaniwebthick.ttf#gurbaniwebthick" />
+                <On Platform="iOS" Value="gurbaniwebthick" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
+                <On Platform="Android" Value="gurbaniwebthick.ttf#gurbaniwebthick" />
+                <On Platform="UWP" Value="/Assets/gurbaniwebthick.ttf#gurbaniwebthick" />
+                <On Platform="iOS" Value="gurbaniwebthick" />
+            </OnPlatform>
+        </ResourceDictionary>-->
+        <StyleSheet Source="Styles.css" />
+    </Application.Resources>
+</Application>

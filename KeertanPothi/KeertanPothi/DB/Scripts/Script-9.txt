@@ -1,0 +1,1 @@
+update DbVersion set version = 13 WHERE VERSION < 13;

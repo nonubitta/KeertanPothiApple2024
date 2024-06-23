@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:local="clr-namespace:KeertanPothi.MarkupExtension"
+             mc:Ignorable="d"
+             x:Class="KeertanPothi.Controls.FloatingToolbar">
+    <pv:PancakeView HorizontalOptions="End" VerticalOptions="End" Margin="30" CornerRadius="30" Padding="5">
+        <pv:PancakeView.BackgroundGradientStops>
+            <pv:GradientStopCollection>
+                <pv:GradientStop Color="#1976D2" Offset="0" />
+                <pv:GradientStop Color="#1976D2" Offset="1" />
+            </pv:GradientStopCollection>
+        </pv:PancakeView.BackgroundGradientStops>
+        <Expander HorizontalOptions="Start" VerticalOptions="End">
+            <Expander.Header>
+                <Image Source="{local:EmbeddedImage KeertanPothi.images.plusb.png}" WidthRequest="30" HeightRequest="30" Rotation="180">
+                    <Image.Triggers>
+                        <DataTrigger TargetType="Image"
+                                    Binding="{Binding Source={RelativeSource AncestorType={x:Type Expander}}, Path=IsExpanded}"
+                                    Value="True">
+                            <Setter Property="Source" Value="{local:EmbeddedImage KeertanPothi.images.crossb.png}"></Setter>
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Expander.Header>
+            <StackLayout Spacing="30" Margin="0,20">
+                <ImageButton Source="{local:EmbeddedImage KeertanPothi.images.AddToPothi.png}" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"></ImageButton>
+                <ImageButton Source="{local:EmbeddedImage KeertanPothi.images.settings2.png}" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"></ImageButton>
+                <ImageButton Source="{local:EmbeddedImage KeertanPothi.images.bookmark.png}" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"></ImageButton>
+            </StackLayout>
+        </Expander>
+    </pv:PancakeView>
+</ContentView>

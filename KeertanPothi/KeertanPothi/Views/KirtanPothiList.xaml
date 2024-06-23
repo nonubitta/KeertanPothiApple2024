@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Keertan Pothi"
+
+             xmlns:local="clr-namespace:KeertanPothi.MarkupExtension"
+             x:Class="KeertanPothi.Views.KirtanPothiList" BackgroundColor="{Binding PageBg}">
+    <!--<NavigationPage.TitleView>
+         <StackLayout Margin="0" Padding="0,7,0,6" Spacing="10" Orientation="Horizontal">
+            <Label Text="Keertan Poth" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="Subtitle"
+                   FontAttributes="Bold" VerticalOptions="Center"></Label>
+             <ImageButton BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" HorizontalOptions="End" Clicked="AddPothi_Clicked"
+                          Source="{local:EmbeddedImage KeertanPothi.images.add.png}" ></ImageButton>
+            <ImageButton BackgroundColor="Transparent" HeightRequest="23" WidthRequest="23" HorizontalOptions="End" Clicked="ShareActionSheet_Clicked"
+                         Source="{local:EmbeddedImage KeertanPothi.images.actionMenuSmall.png}" ></ImageButton>
+        </StackLayout>
+    </NavigationPage.TitleView>-->
+    <StackLayout Padding="10, 10, 10, 10">
+        <Label TextColor="{Binding PunjabiTranslationColor}" FontSize="Medium" Margin="10,0,10,0" HorizontalOptions="CenterAndExpand" 
+               VerticalOptions="CenterAndExpand" x:Name="lblNoPothi" HorizontalTextAlignment="Center"
+               Text="No pothis found.&#10;Click on plus button in top right&#10;to create your first pothi." IsVisible="False"></Label>
+        <ListView VerticalOptions="FillAndExpand" BackgroundColor="Transparent" x:Name="lstPothi" RowHeight="70"
+                  ItemSelected="lstPothi_ItemSelected" SeparatorColor="Black">
+            <ListView.Header>
+                <Label x:Name="lblRenameDelete" Text="* Swipe from right on a pothi to rename or delete" FontSize="Micro" FontAttributes="Italic"
+                        TextColor="{Binding PunjabiTranslationColor}" HorizontalOptions="CenterAndExpand"></Label>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Rename" Clicked="Rename_Clicked" CommandParameter="{Binding .}"></MenuItem>
+                            <MenuItem Text="Delete" IconImageSource="" Clicked="DeletePothi_Clicked" IsDestructive="True" CommandParameter="{Binding .}"></MenuItem>
+                        </ViewCell.ContextActions>
+                        <StackLayout VerticalOptions="Center" Spacing="1" HorizontalOptions="StartAndExpand" Padding="20, 5, 15, 5">
+                            <StackLayout Orientation="Horizontal" Spacing="1">
+                                <Label TextColor="{Binding PageBgTheme.FontColor}" Text="{Binding Name}" FontSize="22" FontAttributes="Bold" ></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="1">
+                                <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="{Binding ShabadCount}" FontSize="12" ></Label>
+                                <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text=" shabads" FontSize="12" ></Label>
+                                <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text=" - Created on:" FontSize="12" ></Label>
+                                <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="{Binding CreatedOn}" FontSize="12" ></Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

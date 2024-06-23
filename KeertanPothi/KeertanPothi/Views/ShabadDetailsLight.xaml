@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:KeertanPothi.MarkupExtension"
+             mc:Ignorable="d" BackgroundColor="{Binding PageBg}"
+             x:Class="KeertanPothi.Views.ShabadDetailsLight">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout VerticalOptions="StartAndExpand">
+                <ListView VerticalOptions="FillAndExpand" BackgroundColor="Transparent" x:Name="lstShabad" HasUnevenRows="True" SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout BackgroundColor="{Binding ListBgColor}" VerticalOptions="StartAndExpand" Padding="20, 10, 20, 5" Spacing="3">
+                                <Label HorizontalTextAlignment="{Binding TextAlign}" TextColor="{Binding PageBgTheme.FontColor}" TextType="Html" x:Name="lblGurmukhi" IsVisible="{Binding GurmukhiVisible}" 
+                                       FontSize="{Binding GurmukhiFontSize}" Text="{Binding GurmukhiHtml}" 
+                                       FontFamily="{Binding GurmukhiFontName}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            </StackLayout>
+            <StackLayout x:Name="EditToolbar" BackgroundColor="#1976D2"  Opacity="1" AbsoluteLayout.LayoutBounds="0,1,1,45" 
+                     AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional" Orientation="Horizontal" 
+                     VerticalOptions="End" Padding="20,0,20,0">
+                <Grid HorizontalOptions="FillAndExpand" Padding="0,7,0,7" RowDefinitions="*" 
+                  ColumnDefinitions="*,*,*">
+
+                    <ImageButton BackgroundColor="Transparent" Source="{local:EmbeddedImage KeertanPothi.images.back.png}"
+                             Grid.Row="0" Grid.Column="0" Clicked="btnBack_Clicked">
+                    </ImageButton>
+                    <ImageButton BackgroundColor="Transparent" Source="{local:EmbeddedImage KeertanPothi.images.bookmark.png}"
+                             Grid.Row="0" Grid.Column="2" Clicked="bookmark_Clicked">
+                    </ImageButton>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

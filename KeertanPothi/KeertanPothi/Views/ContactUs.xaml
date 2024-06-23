@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:KeertanPothi.MarkupExtension"
+             x:Class="KeertanPothi.Views.ContactUs"
+            Title="Keertan Pothi Help">
+    <ContentPage x:Name="pgHelp" Title="Help" BackgroundColor="{Binding PageBg}">
+        <ScrollView x:Name="scrMain">
+            <StackLayout Padding="10,10,10,10">
+                <Frame BorderColor="Black">
+                    <ImageButton Source="{local:EmbeddedImage KeertanPothi.images.PothiYoutubeLink.png}" Clicked="ImageButton_Clicked"></ImageButton>
+                </Frame>
+                <Label HorizontalOptions="CenterAndExpand">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span FontSize="Medium" Text="ਪੰਜਾਬੀ ਹੈਲਪ ਵੀਡੀੳ ਲਈ ਕਲਿਕ ਕਰੋ।" TextColor="{Binding FontColor}" TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Punjabi"/>
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label HorizontalOptions="CenterAndExpand">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span FontSize="Medium" Text="Click here for help video in English" TextColor="{Binding FontColor}" TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_English" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label TextColor="{Binding PunjabiTranslationColor}" HorizontalOptions="CenterAndExpand" Text="Click a topic to expand" FontAttributes="Italic" FontSize="Small"></Label>
+                <Expander x:Name="exp1" Tapped="exp1_Tapped">
+                    <Expander.Header>
+                        <StackLayout Orientation="Horizontal">
+                            <Label TextColor="{Binding FontColor}" x:Name="lblTitleSearchShabad" FontAttributes="Bold" Text="1. Searching Shabad:" FontSize="Subtitle"></Label>
+                            <Label TextColor="{Binding FontColor}" x:Name="lbl1" FontAttributes="Bold" Text="↓" HorizontalOptions="EndAndExpand"></Label>
+                        </StackLayout>
+                    </Expander.Header>
+                    <Expander.Content>
+                        <StackLayout Padding="20,5,20,5">
+                            <Label TextColor="{Binding FontColor}" x:Name="lblFirstLetterSearch" TextDecorations="Underline" Text="First letter search: " FontSize="Subtitle"></Label>
+                            <Label TextColor="{Binding FontColor}" FontSize="Medium" x:Name="lblFirstLetterText" 
+                                   Text="Select First letter search from the list at the bottom.&#10;Then type first letter of each word.&#10;For example, to find shabad">
+                            </Label>
+                            <Label TextColor="{Binding PunjabiTranslationColor}" HorizontalOptions="CenterAndExpand" Text="guir pUrY myrI rwiK leI" FontSize="Medium" 
+                                    FontFamily="PunjabiFont"></Label>
+                            <StackLayout Orientation="Horizontal">
+                                <Label TextColor="{Binding FontColor}" Text="Type:"></Label>
+                                <Label TextColor="{Binding PunjabiTranslationColor}" Text="gpmrl" FontSize="Medium" FontFamily="PunjabiFont"></Label>
+                            </StackLayout>
+                            <Frame BorderColor="Black">
+                                <Image Source="{local:EmbeddedImage KeertanPothi.images.help.FirstLetterSearch.jpg}"></Image>
+                            </Frame>
+                            <BoxView HeightRequest="30"></BoxView>
+
+                            <Label TextColor="{Binding FontColor}" x:Name="lblMainLetter1" TextDecorations="Underline" Text="Main letter search: " FontSize="Subtitle"></Label>
+                            <Label TextColor="{Binding FontColor}" x:Name="lblMainLetter2" FontSize="Medium" Text="Select Main letter search from the list at the bottom.&#10;Then type all the main letters of each word leaving matras. For example, To find shabad">
+                            </Label>
+                            <Label TextColor="{Binding PunjabiTranslationColor}" Text="guir pUrY myrI rwiK leI" FontSize="Medium" 
+                           FontFamily="PunjabiFont"></Label>
+                            <StackLayout Orientation="Horizontal">
+                                <Label TextColor="{Binding FontColor}" Text="Type:"></Label>
+                                <Label TextColor="{Binding PunjabiTranslationColor}" Text="gr pr mr rK le" FontSize="Medium" FontFamily="PunjabiFont"></Label>
+                            </StackLayout>
+                            <Frame BorderColor="Black">
+                                <Image Source="{local:EmbeddedImage KeertanPothi.images.help.MainLetterSearch.jpg}"></Image>
+                            </Frame>
+                            <BoxView HeightRequest="30"></BoxView>
+
+                            <Label TextColor="{Binding FontColor}" x:Name="lblAng1" TextDecorations="Underline" Text="Ang search: " FontSize="Subtitle"></Label>
+                            <Label TextColor="{Binding FontColor}" x:Name="lblAng2" FontSize="Medium" Text="Select 'Ang Search' from the list at the bottom.&#10;Then type the ang number.">
+                            </Label>
+
+                            <Frame BorderColor="Black">
+                                <Image Source="{local:EmbeddedImage KeertanPothi.images.help.AngSearch.jpg}"></Image>
+                            </Frame>
+                        </StackLayout>
+                    </Expander.Content>
+                </Expander>
+                <Expander x:Name="exp2" Tapped="exp2_Tapped">
+                    <Expander.Header>
+                        <StackLayout Orientation="Horizontal">
+                            <Label TextColor="{Binding FontColor}" x:Name="lblCreatePothi" FontAttributes="Bold" Text="2. Creating Pothi:" FontSize="Subtitle"></Label>
+                            <Label TextColor="{Binding FontColor}" x:Name="lbl2" FontAttributes="Bold" Text="↓" HorizontalOptions="EndAndExpand"></Label>
+                        </StackLayout>
+                    </Expander.Header>
+                    <Expander.Content>
+                        <StackLayout Padding="20,5,20,5">
+                            <Label TextColor="{Binding FontColor}" x:Name="lblCreatePothi1" TextDecorations="Underline" Text="Create new pothi: " FontSize="Subtitle"></Label>
+                            <Label TextColor="{Binding FontColor}" x:Name="lblCreatePothi2" FontSize="Medium" Text="Click on Keertan pothi from Menu"></Label>
+                            <Label TextColor="{Binding FontColor}" x:Name="lblCreatePothi3" Text="Click on the green plus icon in top right of the screen." FontSize="Medium"></Label>
+                            <Frame BorderColor="Black">
+                                <Image Source="{local:EmbeddedImage KeertanPothi.images.help.NewPothi1.jpg}"></Image>
+                            </Frame>
+                            <BoxView HeightRequest="30"></BoxView>
+                            <Label TextColor="{Binding FontColor}" x:Name="lblCreatePothi4" FontSize="Medium" Text="Enter a name for new pothi"></Label>
+                            <Frame BorderColor="Black">
+                                <Image Source="{local:EmbeddedImage KeertanPothi.images.help.NewPothi2.jpg}"></Image>
+                            </Frame>
+                            <BoxView HeightRequest="30"></BoxView>
+                            <Label TextColor="{Binding FontColor}" x:Name="lblCreatePothi5" FontSize="Medium" Text="You should see new pothi created"></Label>
+                            <Frame BorderColor="Black">
+                                <Image Source="{local:EmbeddedImage KeertanPothi.images.help.NewPothi4.jpg}"></Image>
+                            </Frame>
+                        </StackLayout>
+                    </Expander.Content>
+                </Expander>
+                <Expander x:Name="exp3" Tapped="exp3_Tapped">
+                    <Expander.Header>
+                        <StackLayout Orientation="Horizontal">
+                            <Label TextColor="{Binding FontColor}" x:Name="lblAddShabad" FontAttributes="Bold" Text="3. Adding shabad to pothi:" FontSize="Subtitle"></Label>
+                            <Label TextColor="{Binding FontColor}" x:Name="lbl3" FontAttributes="Bold" Text="↓" HorizontalOptions="EndAndExpand"></Label>
+                        </StackLayout>
+                    </Expander.Header>
+                    <Expander.Content>
+                        <StackLayout>
+                            <StackLayout Padding="20,5,20,5">
+                                <Label TextColor="{Binding FontColor}" x:Name="lblAddShabad1" FontSize="Medium" Text="Search Shabad or Click on Random Shabad to go to the Shabad screen"></Label>
+                                <Label TextColor="{Binding FontColor}" x:Name="lblAddShabad2" Text="From Shabad screen, click on add to pothi icon." FontSize="Medium"></Label>
+                                <Frame BorderColor="Black">
+                                    <Image Source="{local:EmbeddedImage KeertanPothi.images.help.AddToPothi1.jpg}"></Image>
+                                </Frame>
+                                <!--<Label TextColor="{Binding FontColor}" Text="Click add to pothi" FontSize="Subtitle"></Label>-->
+                                <Label TextColor="{Binding FontColor}" x:Name="lblAddShabad4" Text="Select which pothi to add shabad to" FontSize="Medium"></Label>
+                                <Frame BorderColor="Black">
+                                    <Image Source="{local:EmbeddedImage KeertanPothi.images.help.AddToPothi2.jpg}"></Image>
+                                </Frame>
+                            </StackLayout>
+                        </StackLayout>
+                    </Expander.Content>
+                </Expander>
+
+                <Expander x:Name="exp4" Tapped="exp4_Tapped" >
+                    <Expander.Header>
+                        <StackLayout Orientation="Horizontal">
+                            <Label TextColor="{Binding FontColor}" x:Name="lblSimilarShabad" FontAttributes="Bold" Text="4. Find similar shabads:" FontSize="Subtitle"></Label>
+                            <Label TextColor="{Binding FontColor}" x:Name="lbl4" FontAttributes="Bold" Text="↓" HorizontalOptions="EndAndExpand"></Label>
+                        </StackLayout>
+                    </Expander.Header>
+                    <Expander.Content>
+                        <StackLayout>
+                            <StackLayout Padding="20,5,20,5">
+                                <Label TextColor="{Binding FontColor}" x:Name="lblSimilarShabad1" FontSize="Medium" Text="Search Shabad or Click on Random Shabad to go to the Shabad screen"></Label>
+                                <Label TextColor="{Binding FontColor}" x:Name="lblSimilarShabad2" Text="Long press any verse, then click on 'Find similar shabads' at the top" FontSize="Medium"></Label>
+                                <Frame BorderColor="Black">
+                                    <Image Source="{local:EmbeddedImage KeertanPothi.images.help.similarshabads1.jpg}"></Image>
+                                </Frame>
+                                <!--<Label TextColor="{Binding FontColor}" Text="Click add to pothi" FontSize="Subtitle"></Label>-->
+                                <Label TextColor="{Binding FontColor}" x:Name="lblSimilarShabad3" Text="On 'Find similar shabads' screen, tap keywords to search for." FontSize="Medium"></Label>
+                                <Frame BorderColor="Black">
+                                    <Image Source="{local:EmbeddedImage KeertanPothi.images.help.similarshabads2.jpg}"></Image>
+                                </Frame>
+                            </StackLayout>
+                        </StackLayout>
+                    </Expander.Content>
+                </Expander>
+                <Expander x:Name="exp5" Tapped="exp5_Tapped" >
+                    <Expander.Header>
+                        <StackLayout Orientation="Horizontal">
+                            <Label TextColor="{Binding FontColor}" x:Name="lblAkv" FontAttributes="Bold" Text="5. Asa ki Vaar mode:" FontSize="Subtitle"></Label>
+                            <Label TextColor="{Binding FontColor}" x:Name="lbl5" FontAttributes="Bold" Text="↓" HorizontalOptions="EndAndExpand"></Label>
+                        </StackLayout>
+                    </Expander.Header>
+                    <Expander.Content>
+                        <StackLayout>
+                            <StackLayout Padding="20,5,20,5">
+                                <Label TextColor="{Binding FontColor}" x:Name="lblAkv1" FontSize="Medium" Text="Select 'Sundar Gutka' from the left menu"></Label>
+                                <Label TextColor="{Binding FontColor}" x:Name="lblAkv2" Text="Select 'Asa ki vaar' from the list" FontSize="Medium"></Label>
+                                <Frame BorderColor="Black">
+                                    <Image Source="{local:EmbeddedImage KeertanPothi.images.help.akv1.jpg}"></Image>
+                                </Frame>
+                                <Label TextColor="{Binding FontColor}" x:Name="lblAkv3" Text="Click on Harmonium icon at the top" FontSize="Medium"></Label>
+                                <Frame BorderColor="Black">
+                                    <Image Source="{local:EmbeddedImage KeertanPothi.images.help.akv2.jpg}"></Image>
+                                </Frame>
+                            </StackLayout>
+                        </StackLayout>
+                    </Expander.Content>
+                </Expander>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage x:Name="pgContact" Title="Contact" BackgroundColor="{Binding PageBg}" >
+        <ScrollView>
+            <StackLayout Padding="20,30,20,40">
+                <Label Text="Contact US" FontAttributes="Bold" FontSize="Large" StyleClass="CommonThemeOrange" HorizontalTextAlignment="Center" ></Label>
+                <BoxView HeightRequest="50"></BoxView>
+                <Picker x:Name="Type" TextColor="#a8a7a7">
+                    <Picker.Items>
+                        <x:String>Suggestion</x:String>
+                        <x:String>Bug/Error</x:String>
+                        <x:String>General</x:String>
+                    </Picker.Items>
+                    <Picker.SelectedIndex>0</Picker.SelectedIndex>
+                </Picker>
+                <Entry TextColor="White" BackgroundColor="#606060" PlaceholderColor="#a8a7a7" x:Name="txtEmail" Placeholder="Email"></Entry>
+                <Entry  TextColor="White" BackgroundColor="#606060" PlaceholderColor="#a8a7a7"  x:Name="txtSubject" Placeholder="Subject"></Entry>
+                <Editor TextColor="White" BackgroundColor="#606060" PlaceholderColor="#a8a7a7"  x:Name="txtBody" VerticalOptions="FillAndExpand" Placeholder="Message" HeightRequest="200" ></Editor>
+                <Button x:Name="btnSend" Text="Send" Clicked="btnSend_Clicked" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+</TabbedPage>

@@ -1,0 +1,254 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName></SccProjectName>
+    <SccProvider></SccProvider>
+    <SccAuxPath></SccAuxPath>
+    <SccLocalPath></SccLocalPath>
+  </PropertyGroup>
+ 
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <Product>Keertan Pothi</Product>
+    <Company>Keertan Pothi</Company>
+    <Authors>Gurmeet Singh Khalsa</Authors>
+    <AssemblyName>Keertan Pothi</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="banidb.db3" />
+    <None Remove="DB\banidb.zip" />
+    <None Remove="DB\RunScript.txt" />
+    <None Remove="DB\Scripts\Script-14.txt" />
+    <None Remove="DB\Scripts\Script-9.txt" />
+    <None Remove="images\Menu2.png" />
+    <None Remove="Resources\Fonts\ghwadh_2.ttf" />
+    <None Remove="Resources\Fonts\ghwadh_6.ttf" />
+    <None Remove="Resources\Fonts\GurbaniLipiLight_Bold.ttf" />
+    <None Remove="Resources\Fonts\gurbaniwebthick.ttf" />
+    <None Remove="Resources\Fonts\Gurhindi.ttf" />
+    <None Remove="Resources\Fonts\HandEdit.otf" />
+    <None Remove="Resources\Fonts\HandFont1.otf" />
+    <None Remove="Resources\Fonts\HandFont2.otf" />
+    <None Remove="Resources\Fonts\HandFont3.otf" />
+    <None Remove="Resources\Fonts\HandFontEdit.otf" />
+    <None Remove="Resources\Fonts\PunjabiFont1.otf" />
+    <None Remove="images\hamburger.png" />
+    <None Remove="images\actionMenu.png" />
+    <None Remove="images\actionMenu40.png" />
+    <None Remove="images\AddToPothiSmall.png" />
+    <None Remove="images\settings2Small.png" />
+    <None Remove="images\fullscreenSmall.png" />
+    <None Remove="images\addSmall.png" />
+    <None Remove="images\actionMenu70.png" />
+    <None Remove="images\help\akv1.jpg" />
+    <None Remove="images\help\akv2.jpg" />
+    <None Remove="images\help\exactsearch.jpg" />
+    <None Remove="images\help\language.jpg" />
+    <None Remove="images\help\similarshabads1.jpg" />
+    <None Remove="images\help\similarshabads2.jpg" />
+    <None Remove="images\help\similarshabads1.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="images\actionMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DB\RunScript.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DB\banidb.zip" />
+    <EmbeddedResource Include="DB\Scripts\Script-14.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DB\Scripts\Script-9.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="images\add.png" />
+    <EmbeddedResource Include="images\AddToPothi.png" />
+    <EmbeddedResource Include="images\back.png" />
+    <EmbeddedResource Include="images\Book.png" />
+    <EmbeddedResource Include="images\bookmark.png" />
+    <EmbeddedResource Include="images\crossb.png" />
+    <EmbeddedResource Include="images\down.png" />
+    <EmbeddedResource Include="images\fullscreen.png" />
+    <EmbeddedResource Include="images\harmonium.png" />
+    <EmbeddedResource Include="images\help.png" />
+    <EmbeddedResource Include="images\help\AddToPothi.jpg" />
+    <EmbeddedResource Include="images\help\AddToPothi1.jpg" />
+    <EmbeddedResource Include="images\help\AddToPothi2.jpg" />
+    <EmbeddedResource Include="images\help\AngSearch.jpg" />
+    <EmbeddedResource Include="images\help\FirstLetterSearch.jpg" />
+    <EmbeddedResource Include="images\help\MainLetterSearch.jpg" />
+    <EmbeddedResource Include="images\help\NewPothi1.jpg" />
+    <EmbeddedResource Include="images\help\NewPothi2.jpg" />
+    <EmbeddedResource Include="images\help\NewPothi3.jpg" />
+    <EmbeddedResource Include="images\help\NewPothi4.jpg" />
+    <EmbeddedResource Include="images\help\SearchShabad.jpg" />
+    <EmbeddedResource Include="images\help\ShabadEdit.jpg" />
+    <EmbeddedResource Include="images\help\ShabadMove.jpg" />
+    <EmbeddedResource Include="images\hamburger.png" />
+    <EmbeddedResource Include="images\History.png" />
+    <EmbeddedResource Include="images\info2.png" />
+    <EmbeddedResource Include="images\Menu2.png" />
+    <EmbeddedResource Include="images\next.png" />
+    <EmbeddedResource Include="images\Nitnem.png" />
+    <EmbeddedResource Include="images\Number.png" />
+    <EmbeddedResource Include="images\Pause.png" />
+    <EmbeddedResource Include="images\Play.png" />
+    <EmbeddedResource Include="images\plusb.png" />
+    <EmbeddedResource Include="images\PothiYoutubeLink.png" />
+    <EmbeddedResource Include="images\prev.png" />
+    <EmbeddedResource Include="images\Raag.png" />
+    <EmbeddedResource Include="images\Random.png" />
+    <EmbeddedResource Include="images\search.png" />
+    <EmbeddedResource Include="images\settings2.png" />
+    <EmbeddedResource Include="images\settings3.png" />
+    <EmbeddedResource Include="images\Share.png" />
+    <EmbeddedResource Include="images\shareSmall.png" />
+    <EmbeddedResource Include="images\Toolbar.png" />
+    <EmbeddedResource Include="images\up.png" />
+    <EmbeddedResource Include="images\writer.png" />
+    <EmbeddedResource Include="Resources\Fonts\gurbaniwebthick.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Gurhindi.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\HandFont3.otf" />
+    <EmbeddedResource Include="Resources\Fonts\PunjabiFont1.otf" />
+    <EmbeddedResource Include="images\actionMenu.png" />
+    <EmbeddedResource Include="images\AddToPothiSmall.png" />
+    <EmbeddedResource Include="images\settings2Small.png" />
+    <EmbeddedResource Include="images\fullscreenSmall.png" />
+    <EmbeddedResource Include="images\addSmall.png" />
+    <EmbeddedResource Include="images\actionMenu70.png" />
+    <EmbeddedResource Include="images\help\akv1.jpg" />
+    <EmbeddedResource Include="images\help\akv2.jpg" />
+    <EmbeddedResource Include="images\help\exactsearch.jpg" />
+    <EmbeddedResource Include="images\help\language.jpg" />
+    <EmbeddedResource Include="images\help\similarshabads2.jpg" />
+    <EmbeddedResource Include="images\help\similarshabads1.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Acr.UserDialogs" Version="7.2.0.564" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.6" />
+    <PackageReference Include="SharpZipLib.Portable" Version="0.86.0.3" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
+    <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.4.0" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.4.2" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.4.0.31" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout" Version="18.4.0.31" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Controls\FloatingToolbar.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ContactUs.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\CustomeStepper.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="CopyDB.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="DefaultDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AngSearch.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CreatePothi.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CreateSet.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\EditBaniList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Help.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\History.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ImportPothiPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\KirtanPothiList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NitnemBookmarkPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NitnemList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NotesPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NotifyTest.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PothiShabadList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\RaagList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\RaagShabadList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Search.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SettingsPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ShabadDetailsLight.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SharePopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ShowWriterInfo.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SimilarShabad.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SqlView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TestPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\WriterList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\WriterShabadList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:KeertanPothi.MarkupExtension"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:tb="clr-namespace:KeertanPothi.Controls"
+             x:Class="KeertanPothi.Views.ShabadDetails" BackgroundColor="{Binding PageBg}" >
+
+    <AbsoluteLayout x:Name="slMain" Padding="0,0,0,0" >
+        <SwipeView BackgroundColor="Transparent" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All"
+                   AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <SwipeView.RightItems>
+                <SwipeItems Mode="Execute">
+                    <SwipeItem Text="" BackgroundColor="Transparent" Invoked="SwipeNext" />
+                </SwipeItems>
+            </SwipeView.RightItems>
+            <SwipeView.LeftItems>
+                <SwipeItems Mode="Execute">
+                    <SwipeItem Text="" BackgroundColor="Transparent" Invoked="SwipePrevious" />
+                </SwipeItems>
+            </SwipeView.LeftItems>
+            <SwipeView.Content>
+                <StackLayout VerticalOptions="FillAndExpand"><!--ItemHolding="lstShabad_ItemHolding"-->
+                    <syncfusion:SfListView ItemTapped="lstShabad_ItemTapped" VerticalOptions="FillAndExpand"
+                                           ListViewCachingStrategy="RecycleTemplate" 
+                                           BackgroundColor="Transparent" x:Name="lstShabad"
+                                           AutoFitMode="DynamicHeight" SelectionMode="None">
+                        <syncfusion:SfListView.Behaviors>
+                            <!--<ctrl:Behavior CommandClicked="Behavior_CommandClicked" />-->
+                        </syncfusion:SfListView.Behaviors>
+                        <syncfusion:SfListView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackLayout BackgroundColor="#5e6573" Padding="20,10,20,10" Spacing="0">
+                                    <Label TextColor="#cfe2f3" FontSize="12" Text="Scripture" x:Name="lblScripture" FontAttributes="Bold"></Label>
+                                    <Label TextColor="#cfe2f3" FontSize="12" Text="Ang" x:Name="lblAng" FontAttributes="Bold"></Label>
+                                    <Label TextColor="#cfe2f3" Text="Writer" FontSize="12" x:Name="lblWriter" FontAttributes="Bold"></Label>
+                                    <Label TextColor="#cfe2f3" FontSize="12" Text="Raag" x:Name="lblRaag" FontAttributes="Bold"></Label>
+                                </StackLayout>
+                            </DataTemplate>
+                        </syncfusion:SfListView.HeaderTemplate>
+                        <syncfusion:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <!--<ViewCell.ContextActions>
+                                        <MenuItem Text="Find similar shabads" Clicked="SimilarShabad_Clicked" />
+                                    </ViewCell.ContextActions>-->
+                                    <StackLayout BackgroundColor="{Binding ListBgColor}" VerticalOptions="StartAndExpand" Padding="20, 10, 20, 5" Spacing="3">
+                                        <!--<StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                        </StackLayout.GestureRecognizers>-->
+                                        <Label HorizontalTextAlignment="{Binding TextAlign}" TextType="Html" x:Name="lblGurmukhi" IsVisible="{Binding GurmukhiVisible}" 
+                                       FontSize="{Binding GurmukhiFontSize}" Text="{Binding GurmukhiHtml}" 
+                                       FontFamily="{Binding GurmukhiFontName}"></Label>
+                                        <Label TextColor="{Binding PageBgTheme.EnglishTransliterationColor}" x:Name="lblTransliteration" IsVisible="{Binding TransliterationVisible}" 
+                                       FontSize="{Binding TransliterationFontSize}" Text="{Binding Transliteration}" ></Label>
+                                        <Label x:Name="lblTranslation" IsVisible="{Binding TranslationVisible}" 
+                                       TextColor="{Binding PageBgTheme.EnglishTranslationColor}"
+                                       FontSize="{Binding EnglishFontSize}" Text="{Binding English}" ></Label>
+                                        <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" x:Name="lblPTranslation" IsVisible="{Binding PunjabiTranslationVisible}" 
+                                       FontSize="{Binding PunjabiFontSize}" Text="{Binding Punjabi}" 
+                                       FontFamily="PunjabiFont" ></Label>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </syncfusion:SfListView.ItemTemplate>
+                        <syncfusion:SfListView.FooterTemplate>
+                            <DataTemplate>
+                                <BoxView HeightRequest="40" ></BoxView>
+                            </DataTemplate>
+                        </syncfusion:SfListView.FooterTemplate>
+                    </syncfusion:SfListView>
+                    </StackLayout>
+            </SwipeView.Content>
+        </SwipeView>
+        <StackLayout IsVisible="True" x:Name="EditToolbar" BackgroundColor="{Binding HeaderColor}"  Opacity="1" AbsoluteLayout.LayoutBounds="0,1,1,45" 
+                         AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional" Orientation="Horizontal" 
+                         VerticalOptions="End" Padding="20,0,20,0">
+            <Grid HorizontalOptions="FillAndExpand" Padding="0,0,0,0" RowDefinitions="*" 
+                    ColumnDefinitions="*,*,*,*,*">
+
+                <ImageButton BackgroundColor="Transparent" Source="{local:EmbeddedImage KeertanPothi.images.prev.png}"
+                                Grid.Row="0" Grid.Column="0" Clicked="PrevVerse_Clicked">
+                </ImageButton>
+                <ImageButton BackgroundColor="Transparent" Source="{local:EmbeddedImage KeertanPothi.images.fullscreen.png}"
+                                Grid.Row="0" Grid.Column="1" Clicked="btnMaximize_Clicked">
+                </ImageButton>
+                <ImageButton BackgroundColor="Transparent" Source="{local:EmbeddedImage KeertanPothi.images.settings2.png}" 
+                                Grid.Row="0" Grid.Column="2" Clicked="menu_Clicked">
+                </ImageButton>
+                <ImageButton BackgroundColor="Transparent" Source="{local:EmbeddedImage KeertanPothi.images.AddToPothi.png}"
+                                x:Name="btnAddToPothi" Grid.Row="0" Grid.Column="3" Clicked="addPothi_Clicked">
+                </ImageButton>
+                <ImageButton BackgroundColor="Transparent" Source="{local:EmbeddedImage KeertanPothi.images.next.png}"
+                                Grid.Row="0" Grid.Column="4" Clicked="NextVerse_Clicked">
+                </ImageButton>
+            </Grid>
+        </StackLayout>
+                    
+        <ImageButton IsVisible="False" BackgroundColor="Transparent" x:Name="btnRestore" Margin="0"
+                     Padding="0" Clicked="btnRestore_Clicked" 
+                                  AbsoluteLayout.LayoutFlags="PositionProportional"
+                                 AbsoluteLayout.LayoutBounds="0.5,1,70,30" Source="{local:EmbeddedImage KeertanPothi.images.Toolbar.png}">
+                    </ImageButton>
+    </AbsoluteLayout>
+</ContentPage>

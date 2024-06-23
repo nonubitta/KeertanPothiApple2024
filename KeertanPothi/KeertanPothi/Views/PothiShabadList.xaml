@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:KeertanPothi.MarkupExtension"
+             x:Class="KeertanPothi.Views.PothiShabadList" BackgroundColor="{Binding PageBg}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" x:Name="btnMove" Clicked="Edit_Clicked"></ToolbarItem>
+        <!--<ToolbarItem Text="Share Pothi" x:Name="share" Order="Secondary" Clicked="share_Clicked"></ToolbarItem>-->
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <StackLayout IsVisible="False" x:Name="slNoShabad" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
+            <Label x:Name="lblNoShabadAdded1" HorizontalOptions="CenterAndExpand" FontSize="Subtitle" TextColor="{Binding FontColor}"
+                   Text="You haven't added any shabad to this pothi."></Label>
+            <Button x:Name="btnSearch" HorizontalOptions="CenterAndExpand" Text="Search Shabad to add to this Pothi" Clicked="Search_Clicked"></Button>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label x:Name="lblNoShabadAdded2" Text="From shabad screen, click " FontSize="Subtitle" TextColor="{Binding FontColor}"></Label>
+                <Image Source="{local:EmbeddedImage KeertanPothi.images.AddToPothi.png}" WidthRequest="30" HeightRequest="30"></Image>
+            </StackLayout>
+            <Label x:Name="lblNoShabadAdded3" Text="icon, to add shabad to pothi" FontSize="Subtitle" TextColor="{Binding FontColor}" 
+                   HorizontalOptions="CenterAndExpand"></Label>
+        </StackLayout>
+        <ListView BackgroundColor="Transparent" IsVisible="False" x:Name="lstVerse" HasUnevenRows="True" VerticalOptions="FillAndExpand" ItemSelected="lstVerse_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10, 10, 10, 10" Spacing="0">
+                            <StackLayout Spacing="0">
+                                <ImageButton IsVisible="{Binding IsEditable}" CommandParameter="{Binding .}" Clicked="MoveUp_Clicked" BackgroundColor="Transparent" Source="{local:EmbeddedImage KeertanPothi.images.up.png}"></ImageButton>
+                                <CheckBox WidthRequest="30" IsChecked="{Binding IsChecked}" IsVisible="{Binding IsEditable}"></CheckBox>
+                                <ImageButton IsVisible="{Binding IsEditable}" CommandParameter="{Binding .}" Clicked="MoveDown_Clicked" BackgroundColor="Transparent" Source="{local:EmbeddedImage KeertanPothi.images.down.png}"></ImageButton>
+                            </StackLayout>
+                            <!--<Label Text="{Binding SortOrder}"></Label>-->
+                            <StackLayout VerticalOptions="Center" Padding="10, 0, 10, 0" HorizontalOptions="FillAndExpand">
+                                <Label TextColor="{Binding PageBgTheme.FontColor}" Text="{Binding Gurmukhi}" FontFamily="PunjabiFont" FontSize="24"></Label>
+                                <StackLayout Orientation="Horizontal" Spacing="2">
+                                    <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="By " FontSize="11"></Label>
+                                    <Label StyleClass="CommonThemeOrange" FontAttributes="Bold" Text="{Binding WriterEnglish}" FontSize="11"></Label>
+                                    <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text=" in " FontSize="11"></Label>
+                                    <Label TextColor="Orange" FontAttributes="Bold" Text="{Binding RaagEnglish}" FontSize="11"></Label>
+                                    <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text=" on " FontSize="11"></Label>
+                                    <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text=" Ang " FontSize="11" FontAttributes="Bold" ></Label>
+                                    <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="{Binding PageNo}" FontSize="11" FontAttributes="Bold" ></Label>
+                                </StackLayout>
+                                
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout x:Name="EditToolbar" HeightRequest="50" StyleClass="DarkBlueBg" Opacity="1" AbsoluteLayout.LayoutBounds="0,1,1,50" 
+                     AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional" Orientation="Horizontal" 
+                     VerticalOptions="End" Padding="20,0,20,0">
+            <!--<StackLayout HorizontalOptions="Start">
+                <Button Text="Move" Clicked="Move_Clicked"></Button>
+            </StackLayout>-->
+            <StackLayout HorizontalOptions="StartAndExpand">
+                <Button Text="Copy to other pothi" Clicked="Copy_Clicked"></Button>
+            </StackLayout>
+            <StackLayout HorizontalOptions="End">
+                <Button BackgroundColor="Red" VerticalOptions="CenterAndExpand" HeightRequest="35" Padding="10" Margin="0" Text="Delete" Clicked="Delete_Clicked"></Button>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

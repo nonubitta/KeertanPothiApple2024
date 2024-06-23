@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            mc:Ignorable="d"
+            xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+            xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+            x:Class="KeertanPothi.Views.ShareShabadPopup">
+<pages:PopupPage.Animation>
+    <animations:ScaleAnimation
+        PositionIn="Center"
+        PositionOut="Center"
+        ScaleIn="1.2"
+        ScaleOut="0.8"
+        DurationIn="400"
+        DurationOut="300"
+        EasingIn="SinOut"
+        EasingOut="SinIn"
+        HasBackgroundAnimation="True" >
+    </animations:ScaleAnimation>
+</pages:PopupPage.Animation>
+    <ContentPage.Content>
+        <ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Frame BackgroundColor="{Binding PageBg}" BorderColor="DarkBlue" HasShadow="True" CornerRadius="10" Margin="25,0,25,0" VerticalOptions="Center">
+                <StackLayout Spacing="2" Margin="-20,-20,-20,0">
+                    <StackLayout Orientation="Horizontal" HeightRequest="40" Padding="0" Margin="0,0,0,0" StyleClass="DarkBlueBg" HorizontalOptions="Fill">
+                        <Button IsEnabled="False" Text="" HeightRequest="30" HorizontalOptions="End" WidthRequest="30" Padding="0"></Button>
+                        <Label VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Text="Share" TextColor="White" FontSize="Medium"></Label>
+                        <Button Text="X" Clicked="btnClose_Clicked" HeightRequest="30" HorizontalOptions="End" WidthRequest="30" Padding="0"></Button>
+                    </StackLayout>
+                    <ListView BackgroundColor="Transparent" VerticalOptions="Start" RowHeight="60" x:Name="lstMenu"
+                              ItemSelected="lstMenu_ItemSelected">
+                        <ListView.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Share as Text</x:String>
+                                <x:String>Share as File</x:String>
+                                <x:String>Copy to clipboard</x:String>
+                            </x:Array>
+                        </ListView.ItemsSource>
+                    </ListView>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage.Content>
+</pages:PopupPage>

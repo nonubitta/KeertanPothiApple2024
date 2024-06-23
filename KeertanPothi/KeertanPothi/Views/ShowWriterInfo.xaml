@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:KeertanPothi.Controls"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             x:Class="KeertanPothi.Views.ShowWriterInfo">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True" >
+        </animations:ScaleAnimation>
+    </pages:PopupPage.Animation>
+        <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="20,10,20,40" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Frame CornerRadius="10" Padding="0" BackgroundColor="{Binding PageBgTheme.PageBg}" BorderColor="#1976D2">
+                <StackLayout Padding="10">
+                    <local:PopupHeader Title="Writer Info"></local:PopupHeader>
+                    <StackLayout Padding="20">
+                        <Grid x:Name="grdInfo" IsVisible="False">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" TextColor="{Binding PageBgTheme.FontColor}" FontAttributes="Bold" Grid.Column="0" Text="Born on:"></Label>
+                            <Label Grid.Row="0" TextColor="{Binding PageBgTheme.FontColor}" Grid.Column="1" Text="{Binding BirthDtConv, StringFormat='{0:MMMM dd, yyyy}'}"></Label>
+
+                            <Label Grid.Row="1" TextColor="{Binding PageBgTheme.FontColor}" FontAttributes="Bold" Grid.Column="0" Text="Birth place: "></Label>
+                            <Label Grid.Row="1" TextColor="{Binding PageBgTheme.FontColor}" Grid.Column="1" Text="{Binding BirthPlace}"></Label>
+
+                            <Label x:Name="lblDeath" TextColor="{Binding PageBgTheme.FontColor}" Grid.Row="2" FontAttributes="Bold" Grid.Column="0" Text="Died on:"></Label>
+                            <Label Grid.Row="2" TextColor="{Binding PageBgTheme.FontColor}" Grid.Column="1" Text="{Binding DeathDtConv, StringFormat='{0:MMMM dd, yyyy}'}"></Label>
+
+                            <Label Grid.Row="3" TextColor="{Binding PageBgTheme.FontColor}" FontAttributes="Bold" Grid.Column="0" Text="Spouse:"></Label>
+                            <Label Grid.Row="3" TextColor="{Binding PageBgTheme.FontColor}" Grid.Column="1" Text="{Binding Spouse}"></Label>
+
+                            <Label Grid.Row="4" TextColor="{Binding PageBgTheme.FontColor}" FontAttributes="Bold" Grid.Column="0" Text="Children:"></Label>
+                            <Label Grid.Row="4" TextColor="{Binding PageBgTheme.FontColor}" Grid.Column="1" Text="{Binding Children}"></Label>
+
+                            <Label Grid.Row="5" TextColor="{Binding PageBgTheme.FontColor}" FontAttributes="Bold" Grid.Column="0" Text="Parents:"></Label>
+                            <Label Grid.Row="5" TextColor="{Binding PageBgTheme.FontColor}" Grid.Column="1" Text="{Binding Parents}"></Label>
+                            <StackLayout IsVisible="False" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
+                                <BoxView HeightRequest="20"></BoxView>
+                                <Label Text="{Binding Info}"></Label>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+    </pages:PopupPage>

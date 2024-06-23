@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Sundar Gutka"
+             x:Class="KeertanPothi.Views.NitnemList" BackgroundColor="{Binding PageBg}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit List" Clicked="Edit_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <StackLayout Padding="10">
+        <Label TextColor="{Binding PunjabiTranslationColor}" FontSize="Medium" Margin="10,0,10,0" HorizontalOptions="CenterAndExpand" 
+               VerticalOptions="CenterAndExpand" x:Name="lblNoBani" HorizontalTextAlignment="Center"
+               Text="All banis are disabled&#10;Click on Edit List to add bani." IsVisible="False"></Label>
+        <ListView BackgroundColor="Transparent" VerticalOptions="FillAndExpand" RowHeight="70" x:Name="lstNitnem" ItemSelected="lstNitnem_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Spacing="0" Padding="20,5,20,5">
+                            <Label TextColor="{Binding PageBgTheme.FontColor}" Text="{Binding PunjabiName}" FontSize="24" FontFamily="PunjabiFont"></Label>
+                            <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="{Binding EnglishName}" FontSize="14" ></Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

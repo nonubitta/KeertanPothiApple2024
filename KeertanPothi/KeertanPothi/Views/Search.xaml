@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:KeertanPothi.MarkupExtension"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             x:Class="KeertanPothi.Views.Search" BackgroundColor="{Binding PageBg}">
+    <NavigationPage.TitleView>
+         <StackLayout Margin="0" Padding="0,2,0,6" Spacing="10" Orientation="Horizontal">
+            <Frame CornerRadius="10" Padding="5" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" HasShadow="False" >
+                <StackLayout HeightRequest="30" Padding="10,5,0,0" Orientation="Horizontal"  >
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Label StyleClass="LabelAsText" x:Name="txtSearch" FontSize="20" TextColor="Black"
+                               FontFamily="PunjabiFont" HorizontalOptions="FillAndExpand" />
+                    <Button Text="X" HorizontalOptions="End" Margin="0,-5,0,0" BackgroundColor="Transparent" FontSize="Medium" StyleClass="DarkBlueFont" 
+                       FontAttributes="Bold" Clicked="Clear_Clicked" Padding="0" WidthRequest="30"></Button>
+                </StackLayout>
+            </Frame>
+            <Button BackgroundColor="Transparent" FontAttributes="Bold" HorizontalOptions="End" Clicked="History_Clicked" Text="History" 
+                     Padding="5" HeightRequest="20"></Button>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <Grid>
+        <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"></ColumnDefinition></Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Column="0" Grid.Row="0" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand">
+            <!--<StackLayout Padding="20, 20, 20, 20" x:Name="slLogo" Spacing="12" VerticalOptions="StartAndExpand">
+                <Button Text="How to Search" Clicked="HowToSearch_Clicked"></Button>
+                <Button Text="Help" Clicked="Help_Clicked"></Button>
+            </StackLayout>-->
+            <StackLayout>
+                <ListView BackgroundColor="Transparent" x:Name="lstHistory" HasUnevenRows="True" VerticalOptions="FillAndExpand"
+                      ItemSelected="lstHistory_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Padding="10, 5, 10, 5">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="2" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Spacing="0" Grid.Row="0" Grid.Column="0" >
+                                            <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="{Binding CreatedOn, StringFormat='{0:dd MMM}'}" FontSize="12" FontAttributes="Bold" ></Label>
+                                            <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="{Binding CreatedOn, StringFormat='{0:yyyy }'}" FontSize="12" FontAttributes="Bold" ></Label>
+                                            <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="{Binding CreatedOn, StringFormat='{0:H:mm}'}" FontSize="12" FontAttributes="Bold" ></Label>
+                                        </StackLayout>
+                                        <StackLayout VerticalOptions="Center" Grid.Row="0" Grid.Column="2" >
+                                            <Label TextColor="{Binding PageBgTheme.FontColor}" Text="{Binding Gurmukhi}" FontFamily="PunjabiFont" FontSize="24"></Label>
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="By " FontSize="11"></Label>
+                                                <Label StyleClass="CommonThemeOrange" FontAttributes="Bold" Text="{Binding WriterEnglish}" FontSize="11"></Label>
+                                                <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text=" in " FontSize="11"></Label>
+                                                <Label TextColor="Orange" FontAttributes="Bold" Text="{Binding RaagEnglish}" FontSize="11"></Label>
+                                                <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text=" on " FontSize="11"></Label>
+                                                <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="Ang " FontSize="11" FontAttributes="Bold" ></Label>
+                                                <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" LineBreakMode="NoWrap" Text="{Binding PageNo}" FontSize="11" FontAttributes="Bold" ></Label>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout x:Name="slCount" Spacing="-6" IsVisible="False">
+                <StackLayout BackgroundColor="DarkOrange" Padding="0">
+                    <Label VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" 
+                       x:Name="lblTotalRows" HeightRequest="20"></Label>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout x:Name="slList" IsVisible="False" VerticalOptions="FillAndExpand">
+                <syncfusion:SfListView BackgroundColor="Transparent"  x:Name="lstVerse"  
+                          VerticalOptions="FillAndExpand" AutoFitMode="Height" ItemTapped="lstVerse_ItemTapped" >
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout VerticalOptions="Center" Padding="20, 5, 20, 5">
+                                    <Label TextColor="{Binding PageBgTheme.FontColor}" Text="{Binding Gurmukhi}" FontFamily="PunjabiFont" FontSize="26"></Label>
+                                    <StackLayout Orientation="Horizontal" Spacing="2">
+                                        <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text="By " FontSize="11"></Label>
+                                        <Label StyleClass="CommonThemeOrange" FontAttributes="Bold" Text="{Binding WriterEnglish}" FontSize="11"></Label>
+                                        <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text=" in " FontSize="11"></Label>
+                                        <Label  TextColor="Orange" FontAttributes="Bold" Text="{Binding RaagEnglish}" FontSize="11"></Label>
+                                        <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text=" on " FontSize="11"></Label>
+                                        <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" Text=" Ang " FontSize="11" FontAttributes="Bold" ></Label>
+                                        <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}"  Text="{Binding PageNo}" FontSize="11" FontAttributes="Bold" ></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Grid.Column="0" Grid.Row="1" x:Name="EditToolbar" Margin="0" BackgroundColor="Transparent" IsVisible="False">
+            <Frame BackgroundColor="DarkGray" BorderColor="#606060" Padding="5,20,5,10" >
+                <StackLayout>
+
+                    <Picker FontSize="Medium" TextColor="White" ItemDisplayBinding="{Binding Value }" x:Name="pckSearchType" 
+                            SelectedIndexChanged="pckSearchType_SelectedIndexChanged">
+                    </Picker>
+                    <Grid x:Name="controlGrid2" RowSpacing="1" ColumnSpacing="1"
+                      RowDefinitions="50,50,50,50,50" ColumnDefinitions="*,*,*,*,*,*,*,*,*" >
+
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text="a" Grid.Row="0" Grid.Column="0"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "A" Grid.Row="0" Grid.Column="1"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "e" Grid.Row="0" Grid.Column="2"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "s" Grid.Row="0" Grid.Column="3"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "h" Grid.Row="0" Grid.Column="4"
+            FontFamily="PunjabiFont" />
+
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text="k" Grid.Row="0" Grid.Column="5"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "K" Grid.Row="0" Grid.Column="6"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "g" Grid.Row="0" Grid.Column="7"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "G" Grid.Row="0" Grid.Column="8"
+            FontFamily="PunjabiFont" />
+
+
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text="c" Grid.Row="1" Grid.Column="0"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "C" Grid.Row="1" Grid.Column="1"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "j" Grid.Row="1" Grid.Column="2"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "J" Grid.Row="1" Grid.Column="3"
+            FontFamily="PunjabiFont" />
+
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "t" Grid.Row="1" Grid.Column="4"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "T" Grid.Row="1" Grid.Column="5"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "f" Grid.Row="1" Grid.Column="6"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "F" Grid.Row="1" Grid.Column="7"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "x" Grid.Row="1" Grid.Column="8"
+                        FontFamily="PunjabiFont" />
+
+
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "q" Grid.Row="2" Grid.Column="0"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "Q" Grid.Row="2" Grid.Column="1"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "d" Grid.Row="2" Grid.Column="2"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "D" Grid.Row="2" Grid.Column="3"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "n" Grid.Row="2" Grid.Column="4"
+                        FontFamily="PunjabiFont" />
+
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "p" Grid.Row="2" Grid.Column="5"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "P" Grid.Row="2" Grid.Column="6"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "b" Grid.Row="2" Grid.Column="7"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "B" Grid.Row="2" Grid.Column="8"
+            FontFamily="PunjabiFont" />
+
+
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text="X" Grid.Row="3" Grid.Column="0"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "r" Grid.Row="3" Grid.Column="1"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "l" Grid.Row="3" Grid.Column="2"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "v" Grid.Row="3" Grid.Column="3"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "V" Grid.Row="3" Grid.Column="4"
+            FontFamily="PunjabiFont" />
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "|" Grid.Row="3" Grid.Column="5"
+            FontFamily="PunjabiFont" />
+
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "\" Grid.Row="3" Grid.Column="6"
+            FontFamily="PunjabiFont" />
+
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "m" Grid.Row="3" Grid.Column="7"
+                        FontFamily="PunjabiFont" />
+
+                    <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "←" Grid.Row="3" Grid.Column="8"
+                        FontFamily="PunjabiFont" CommandParameter="B" />
+
+
+                    <Button x:Name="btnNxtKeyboard" FontSize="Small" StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" CommandParameter="N" Text = "123" 
+                         FontFamily="PunjabiFont" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" />
+
+                    <Button x:Name="btnSpace" FontSize="Small" StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" CommandParameter="S" Text = "Space" 
+                        Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" />
+
+                    <Button FontSize="Small" StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" CommandParameter="F" Text="Search" 
+                        Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="3" />
+
+                </Grid>
+                    <Grid x:Name="controlGrid3" RowSpacing="1" ColumnSpacing="1" IsVisible="False"
+                      RowDefinitions="50,50,50,50" ColumnDefinitions="*,*,*,*,*,*,*,*,*,*" >
+
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text="1" Grid.Row="0" Grid.Column="0"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "2" Grid.Row="0" Grid.Column="1"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "3" Grid.Row="0" Grid.Column="2"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "4" Grid.Row="0" Grid.Column="3"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "5" Grid.Row="0" Grid.Column="4"
+            FontFamily="PunjabiFont" />
+
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text="6" Grid.Row="0" Grid.Column="5"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "7" Grid.Row="0" Grid.Column="6"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "8" Grid.Row="0" Grid.Column="7"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "9" Grid.Row="0" Grid.Column="8"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "0" Grid.Row="0" Grid.Column="9"
+            FontFamily="PunjabiFont" />
+
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text="y" Grid.Row="1" Grid.Column="0"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "Y" Grid.Row="1" Grid.Column="1"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "i" Grid.Row="1" Grid.Column="2"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "I" Grid.Row="1" Grid.Column="3"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "w" Grid.Row="1" Grid.Column="4"
+            FontFamily="PunjabiFont" />
+
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "W" Grid.Row="1" Grid.Column="5"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "u" Grid.Row="1" Grid.Column="6"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "U" Grid.Row="1" Grid.Column="7"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "o" Grid.Row="1" Grid.Column="8"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "O" Grid.Row="1" Grid.Column="9"
+                        FontFamily="PunjabiFont" />
+
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "R" Grid.Row="2" Grid.Column="0"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "N" Grid.Row="2" Grid.Column="1"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "M" Grid.Row="2" Grid.Column="2"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "E" Grid.Row="2" Grid.Column="3"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "S" Grid.Row="2" Grid.Column="4"
+                        FontFamily="PunjabiFont" />
+
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "^" Grid.Row="2" Grid.Column="5"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "Z" Grid.Row="2" Grid.Column="6"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "z" Grid.Row="2" Grid.Column="7"
+            FontFamily="PunjabiFont" />
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "&amp;" Grid.Row="2" Grid.Column="8"
+            FontFamily="PunjabiFont" />
+
+                        <Button StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" Text = "←" Grid.Row="2" Grid.Column="9"
+                        FontFamily="PunjabiFont" CommandParameter="B" />
+                        
+                        <Button x:Name="btnNxtKeyboard2" FontSize="Small" StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" CommandParameter="N" Text = "123" 
+                        Grid.Row="3" Grid.Column="4" FontFamily="PunjabiFont" />
+
+                        <Button x:Name="btnSpace2" FontSize="Small" StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" CommandParameter="S" Text = "Space" 
+                        Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" />
+
+                        <Button FontSize="Small" StyleClass="KeyboardBtn"  Clicked="Akhar_Clicked" CommandParameter="F" Text="Search" 
+                        Grid.Row="3" Grid.Column="7" Grid.ColumnSpan="3" />
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </Grid>
+</ContentPage>

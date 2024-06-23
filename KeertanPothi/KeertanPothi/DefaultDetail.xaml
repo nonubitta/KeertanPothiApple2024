@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:KeertanPothi.MarkupExtension"
+             
+             x:Class="KeertanPothi.DefaultDetail">
+    <ContentPage.Content>
+        <StackLayout >
+            
+            
+            <!--<Image Source="{local:EmbeddedImage KeertanPothi.images.gradient.png}"></Image>-->
+            <BoxView HeightRequest="50"></BoxView>
+            <!--<Label TextType="Html">
+                <![CDATA[
+                 This text is red -><font color="red">This is some text!</font>. ends here
+                ]]>
+            </Label>-->
+            <StackLayout Padding="0,0,0, 80" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Spacing="30">
+                <StackLayout>
+                    <ImageButton Clicked="Help_Clicked" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="60" WidthRequest="60" BackgroundColor="Transparent" Source="{local:EmbeddedImage KeertanPothi.images.help.png}"></ImageButton>
+                    <Label Text="Help" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                </StackLayout>
+                <StackLayout>
+                    <ImageButton Clicked="Contact_Clicked" HorizontalOptions="Center" VerticalOptions="EndAndExpand" HeightRequest="60" WidthRequest="60" BackgroundColor="Transparent" Source="{local:EmbeddedImage KeertanPothi.images.Contact.png}"></ImageButton>
+                    <Label Text="Contact" HorizontalOptions="Center" VerticalOptions="EndAndExpand" ></Label>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
+<!--xmlns:eliteKit="clr-namespace:eliteKit.eliteElements;assembly=eliteKit"
+<eliteKit:eliteHeader
+              VerticalOptions="Start"
+              HorizontalOptions="FillAndExpand"
+              HeightRequest="200"
+              ColorPrimary="#2196f3"
+              ColorSecondary="#2196f3">
+    <eliteKit:eliteHeader.HeaderView>
+        <StackLayout>
+            <Label Text="kIrqnu poQI" FontSize="50" HorizontalOptions="Center" FontFamily="PunjabiFont"></Label>
+            <Label Text="Keertan Pothi" FontSize="30" HorizontalOptions="Center" FontAttributes="Bold"></Label>
+        </StackLayout>
+    </eliteKit:eliteHeader.HeaderView>
+</eliteKit:eliteHeader>-->

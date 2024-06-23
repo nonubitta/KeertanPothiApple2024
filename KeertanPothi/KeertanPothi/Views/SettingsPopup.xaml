@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:local="clr-namespace:KeertanPothi.Controls"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             x:Class="KeertanPothi.Views.SettingsPopup">
+    <pages:PopupPage.Animation>
+        <animations:MoveAnimation
+           PositionIn="Right" PositionOut="Right"
+            DurationIn="200" DurationOut="200"
+            HasBackgroundAnimation="True" >
+        </animations:MoveAnimation>
+    </pages:PopupPage.Animation>
+    <ContentPage.Content>
+        <ScrollView x:Name="MainScroll" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Frame BackgroundColor="{Binding PageBg}" BorderColor="#1976D2" HasShadow="True" CornerRadius="10" Margin="20,10,20,0" VerticalOptions="Start">
+                <StackLayout Spacing="2" Margin="0">
+                   <local:PopupHeader Title="Quick Settings"></local:PopupHeader>
+                    <BoxView BackgroundColor="Transparent" HeightRequest="5" ></BoxView>
+                    <StackLayout Padding="10,0,10,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Gurmukhi" FontSize="16" FontAttributes="Bold" TextColor="{Binding FontColor}" HorizontalOptions="StartAndExpand"></Label>
+                            <Switch x:Name="swtGurmukhi" Toggled="swtGurmukhi_Toggled" HorizontalOptions="End"></Switch>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Font Size" TextColor="{Binding EnglishTranslationColor}" FontSize="16" HorizontalOptions="StartAndExpand"></Label>
+                            <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                                <Button Clicked="stpGurmukhi_ValueChanged" CommandParameter="false" Padding="0" HeightRequest="30" WidthRequest="40" Text="-"></Button>
+                                <Button Clicked="stpGurmukhi_ValueChanged" CommandParameter="true" Padding="0" HeightRequest="30" WidthRequest="40" Text="+"></Button>
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Spacing="0" Orientation="Horizontal" HorizontalOptions="End">
+                            <Label TextColor="{Binding EnglishTranslationColor}" VerticalOptions="Center" Text="Normal Font" FontSize="16" ></Label>
+                            <CheckBox CheckedChanged="chbNormal_CheckedChanged" VerticalOptions="Center" x:Name="chbNormal"></CheckBox>
+                            <BoxView VerticalOptions="Center" BackgroundColor="Transparent" WidthRequest="5" ></BoxView>
+                            <Label TextColor="{Binding EnglishTranslationColor}" VerticalOptions="Center" Text="Hand Written" FontSize="16" ></Label>
+                            <CheckBox CheckedChanged="chbHand_CheckedChanged" VerticalOptions="Center" x:Name="chbHand"></CheckBox>
+                        </StackLayout>
+
+                        <BoxView BackgroundColor="DarkGray" HeightRequest="1" ></BoxView>
+                        <StackLayout >
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="English Translation" FontAttributes="Bold" FontSize="16" TextColor="{Binding FontColor}" HorizontalOptions="StartAndExpand"></Label>
+                                <Switch x:Name="swtTranslation" Toggled="swtTranslation_Toggled" VerticalOptions="Center" HorizontalOptions="End"></Switch>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label TextColor="{Binding EnglishTranslationColor}" Text="Font Size" FontSize="16" HorizontalOptions="StartAndExpand"></Label>
+                                <Button Clicked="stpTranslation_ValueChanged" Padding="0" HeightRequest="30" WidthRequest="40" CommandParameter="false" Text="-"></Button>
+                                <Button Clicked="stpTranslation_ValueChanged" Padding="0" HeightRequest="30" WidthRequest="40" CommandParameter="true" Text="+"></Button>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <BoxView BackgroundColor="DarkGray" HeightRequest="1" ></BoxView>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Punjabi Translation&#10;(SGGS Darpan)" FontAttributes="Bold" FontSize="16" TextColor="{Binding FontColor}" HorizontalOptions="StartAndExpand"></Label>
+                            <Switch x:Name="swtPTranslation" Toggled="swtPTranslation_Toggled" VerticalOptions="Center" HorizontalOptions="End"></Switch>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label TextColor="{Binding EnglishTranslationColor}" Text="Font Size" FontSize="16" HorizontalOptions="StartAndExpand"></Label>
+                            <Button Clicked="stpPTranslation_ValueChanged" Padding="0" HeightRequest="30" WidthRequest="40" CommandParameter="false" Text="-"></Button>
+                            <Button Clicked="stpPTranslation_ValueChanged" Padding="0" HeightRequest="30" WidthRequest="40" CommandParameter="true" Text="+"></Button>
+                        </StackLayout>
+                        
+
+                        <BoxView BackgroundColor="DarkGray" HeightRequest="1" ></BoxView>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Transliteration" FontAttributes="Bold" FontSize="16" TextColor="{Binding FontColor}" HorizontalOptions="StartAndExpand"></Label>
+                            <Switch x:Name="swtTransliteration" Toggled="swtTransliteration_Toggled" VerticalOptions="Center" HorizontalOptions="End"></Switch>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label TextColor="{Binding EnglishTranslationColor}" Text="Font Size" FontSize="16" HorizontalOptions="StartAndExpand"></Label>
+                            <Button Clicked="stpTransliteration_ValueChanged" Padding="0" HeightRequest="30" WidthRequest="40" CommandParameter="false" Text="-"></Button>
+                            <Button Clicked="stpTransliteration_ValueChanged" Padding="0" HeightRequest="30" WidthRequest="40" CommandParameter="true" Text="+"></Button>
+                        </StackLayout>
+
+                        <BoxView BackgroundColor="DarkGray" HeightRequest="1" ></BoxView>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Theme" FontAttributes="Bold" FontSize="16" TextColor="{Binding FontColor}" HorizontalOptions="StartAndExpand"></Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <RadioButton TextColor="{Binding EnglishTranslationColor}" HorizontalOptions="StartAndExpand" Padding="0"
+                                         BackgroundColor="Transparent" Text="Blue" x:Name="rbBlue" CheckedChanged="rbBlue_CheckedChanged"></RadioButton>
+                            <RadioButton TextColor="{Binding EnglishTranslationColor}" HorizontalOptions="CenterAndExpand" Padding="0"
+                                         BackgroundColor="Transparent" Text="Blue/Black" x:Name="rbGray" CheckedChanged="rbGray_CheckedChanged"></RadioButton>
+                            <RadioButton TextColor="{Binding EnglishTranslationColor}" HorizontalOptions="EndAndExpand" Padding="0"
+                                         BackgroundColor="Transparent" Text="Black" x:Name="rbBlack" CheckedChanged="rbBlack_CheckedChanged"></RadioButton>
+                        </StackLayout>
+
+                        <BoxView BackgroundColor="DarkGray" HeightRequest="1" ></BoxView>
+                        <Label Text="General" FontAttributes="Bold" FontSize="16" TextColor="{Binding FontColor}" HorizontalOptions="StartAndExpand"></Label>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label TextColor="{Binding EnglishTranslationColor}" Text="Show Vishraam" HorizontalOptions="StartAndExpand"></Label>
+                            <Switch x:Name="swtVishraam" HorizontalOptions="End" Toggled="swtVishraam_Toggled" VerticalOptions="Center"></Switch>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label TextColor="{Binding EnglishTranslationColor}" Text="Ladivaar" HorizontalOptions="StartAndExpand"></Label>
+                            <Switch x:Name="swtLadivaar" Toggled="swtLadivaar_Toggled" VerticalOptions="Center" HorizontalOptions="End"></Switch>
+                        </StackLayout>
+                        <!--<StackLayout Orientation="Horizontal">
+                            <Label Text="Dark Theme" HorizontalOptions="StartAndExpand"></Label>
+                            <Switch x:Name="swtDark" Toggled="swtDark_Toggled" VerticalOptions="Center" HorizontalOptions="End"></Switch>
+                        </StackLayout>-->
+                        <BoxView BackgroundColor="DarkGray" HeightRequest="1" ></BoxView>
+                        <BoxView HeightRequest="2" ></BoxView>
+                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" >
+                            <Button HeightRequest="40" Text="Close" x:Name="btnSave" Clicked="btnSave_Clicked"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage.Content>
+</pages:PopupPage>
+             

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Raag List"
+             x:Class="KeertanPothi.Views.RaagList" BackgroundColor="{Binding PageBg}">
+    <StackLayout Padding="10, 10, 10, 10">
+        <ListView VerticalOptions="FillAndExpand" BackgroundColor="Transparent" x:Name="lstRaag" RowHeight="70" ItemSelected="lstRaag_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout VerticalOptions="Center" Spacing="1" Padding="20, 5, 20, 5">
+                                <Label TextColor="{Binding PageBgTheme.FontColor}" StyleClass="MainText" Text="{Binding RaagGurmukhi}" FontFamily="PunjabiFont"></Label>
+                                <Label TextColor="{Binding PageBgTheme.PunjabiTranslationColor}" StyleClass="SecondaryText" Text="{Binding RaagEnglish}" FontSize="16" ></Label>
+                            </StackLayout>
+                            <Label Text="{Binding PageNos}"></Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

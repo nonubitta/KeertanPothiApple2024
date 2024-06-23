@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:KeertanPothi.MarkupExtension"
+             x:Class="KeertanPothi.MainPage"
+            Title="Search" MasterBehavior="Popover" BackgroundColor="Cyan">
+    <MasterDetailPage.Master >
+        <ContentPage Title="𝌆" IconImageSource="Menu.png" >
+            <!--☰≡𝌆⌘-->
+            <StackLayout Spacing="0" BackgroundColor="#202124">
+                <StackLayout Padding="0,45,0,0" HeightRequest="90" Spacing="0" BackgroundColor="#1976D2" VerticalOptions="Start">
+                    <!--<StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Header_Tapped"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>-->
+                    <Label VerticalOptions="Center" HorizontalOptions="Center" TextColor="#ffffff" 
+                           FontFamily="PunjabiFont" Text="kIrqnu poQI" FontSize="34"></Label>
+                    <Label VerticalOptions="Center" HorizontalOptions="Center" TextColor="#ffffff" 
+                           Text="Keertan Pothi" FontSize="18"></Label>
+                    <Label VerticalOptions="Center" HorizontalOptions="Center" TextColor="#ffffff" 
+                           Text="(Beta)" FontSize="Micro"></Label>
+                </StackLayout>
+                <StackLayout VerticalOptions="StartAndExpand" x:Name="slMenuBg">
+                    <ListView BackgroundColor="Transparent" VerticalOptions="FillAndExpand" RowHeight="60" x:Name="lstMenu" ItemSelected="lstMenu_ItemSelected"
+                          SeparatorColor="#4E4E4F">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell IsEnabled="{Binding ItemEnabled}">
+                                    <StackLayout Padding="20,5,20,5" Orientation="Horizontal" VerticalOptions="Center" Spacing="8">
+                                        <Image VerticalOptions="Center" WidthRequest="25" HeightRequest="25" Source="{Binding ImageUrl}"></Image>
+                                        <Label VerticalOptions="Center" Text="{Binding ItemName}" FontSize="{Binding FontSize}" 
+                                               TextColor="#eef0f1" ></Label>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <StackLayout Padding="20, 0, 20, 20" VerticalOptions="End" x:Name="slFooterBg">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Language:" VerticalOptions="CenterAndExpand" TextColor="#eef0f1" HorizontalOptions="StartAndExpand"></Label>
+                        <Label Text="English" VerticalOptions="CenterAndExpand" TextColor="#eef0f1" HorizontalOptions="StartAndExpand"></Label>
+                        <Switch x:Name="swtLanguage" HorizontalOptions="CenterAndExpand" Toggled="Language_Toggled"></Switch>
+                        <Label Text="ਪੰਜਾਬੀ" VerticalOptions="CenterAndExpand" TextColor="#eef0f1" HorizontalOptions="EndAndExpand"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Image HeightRequest="20" WidthRequest="20" x:Name="imgIsAdmin">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label x:Name="lblVersion" HorizontalOptions="EndAndExpand" TextColor="#eef0f1" FontSize="Small"></Label>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>
