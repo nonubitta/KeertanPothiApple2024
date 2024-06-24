@@ -538,6 +538,7 @@ namespace KeertanPothi
         internal static void SaveLastShabad(int shabadId, int? selectedVerseId, int pothiId, int angNo, string requestFrom)
         {
             OpenLastShabad lastShabad = new OpenLastShabad();
+            lastShabad.RequestFrom = requestFrom;
             lastShabad.ShabadID = shabadId;
             lastShabad.VerseID = selectedVerseId;
             if (requestFrom == "Pothi")
@@ -863,15 +864,24 @@ namespace KeertanPothi
 
         internal async static void SaveShabadToHistory(int shabadId, int? verseId)
         {
+            _con = DependencyService.Get<ISqliteDb>().GetSQLiteConnection();
+            History history = new History(shabadId, verseId);
             try
             {
-                _con = DependencyService.Get<ISqliteDb>().GetSQLiteConnection();
-                History history = new History(shabadId, verseId);
                 _ = await _con.InsertAsync(history);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //Util.ShowRoast("Save history error: " + ex.Message);
+                string query = $@"Delete from History where shabadId = {shabadId};";
+                try
+                {
+                    await _con.ExecuteAsync(query);
+                    _ = await _con.InsertAsync(history);
+                }
+                catch (Exception)
+                {
+
+                }
             }
         }
 
@@ -1023,6 +1033,12 @@ namespace KeertanPothi
         {
             _con = DependencyService.Get<ISqliteDb>().GetSQLiteConnection();
             int? version = await _con.ExecuteScalarAsync<int>("SELECT version FROM DbVersion");
+            return version;
+        }
+        internal async static Task<int?> CleanHistory()
+        {
+            _con = DependencyService.Get<ISqliteDb>().GetSQLiteConnection();
+            int? version = await _con.ExecuteScalarAsync<int>("Delete from History where ShabadId not in (select ShabadId from History order by CreatedOn desc limit 50)");
             return version;
         }
     }

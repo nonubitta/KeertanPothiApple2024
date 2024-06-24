@@ -649,6 +649,7 @@ namespace DBTest.Models
     [Serializable]
     public class OpenLastShabad
     {
+        public string RequestFrom { get; set; } = string.Empty;
         public int? ShabadID { get; set; }
         public int? VerseID { get; set; }
         public int? PothiId { get; set; }

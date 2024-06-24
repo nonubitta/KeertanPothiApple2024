@@ -9,6 +9,9 @@
              xmlns:tb="clr-namespace:KeertanPothi.Controls"
              x:Class="KeertanPothi.Views.ShabadDetails" BackgroundColor="{Binding PageBg}" >
 
+    <!--xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+  ios:Page.PrefersHomeIndicatorAutoHidden="true"-->
+    
     <AbsoluteLayout x:Name="slMain" Padding="0,0,0,0" >
         <SwipeView BackgroundColor="Transparent" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All"
                    AbsoluteLayout.LayoutBounds="0,0,1,1">
@@ -87,8 +90,8 @@
                 <ImageButton BackgroundColor="Transparent" Source="{local:EmbeddedImage KeertanPothi.images.fullscreen.png}"
                                 Grid.Row="0" Grid.Column="1" Clicked="btnMaximize_Clicked">
                 </ImageButton>
-                <ImageButton BackgroundColor="Transparent" Source="{local:EmbeddedImage KeertanPothi.images.settings2.png}" 
-                                Grid.Row="0" Grid.Column="2" Clicked="menu_Clicked">
+                <ImageButton BackgroundColor="Transparent" Source="{local:EmbeddedImage KeertanPothi.images.quicksetting.png}" 
+                                Grid.Row="0" Grid.Column="2" Clicked="QuickSettings">
                 </ImageButton>
                 <ImageButton BackgroundColor="Transparent" Source="{local:EmbeddedImage KeertanPothi.images.AddToPothi.png}"
                                 x:Name="btnAddToPothi" Grid.Row="0" Grid.Column="3" Clicked="addPothi_Clicked">

@@ -28,6 +28,7 @@
     <None Remove="DB\Scripts\Script-14.txt" />
     <None Remove="DB\Scripts\Script-9.txt" />
     <None Remove="images\Menu2.png" />
+    <None Remove="images\quicksetting.png" />
     <None Remove="Resources\Fonts\ghwadh_2.ttf" />
     <None Remove="Resources\Fonts\ghwadh_6.ttf" />
     <None Remove="Resources\Fonts\GurbaniLipiLight_Bold.ttf" />
@@ -105,6 +106,7 @@
     <EmbeddedResource Include="images\plusb.png" />
     <EmbeddedResource Include="images\PothiYoutubeLink.png" />
     <EmbeddedResource Include="images\prev.png" />
+    <EmbeddedResource Include="images\quicksetting.png" />
     <EmbeddedResource Include="images\Raag.png" />
     <EmbeddedResource Include="images\Random.png" />
     <EmbeddedResource Include="images\search.png" />

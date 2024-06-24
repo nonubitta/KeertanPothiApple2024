@@ -157,6 +157,7 @@ namespace KeertanPothi.Views
         private void CreateToolbars()
         {
             ToolbarItems.Clear();
+            CreateSettingToolbar();
             if (RequestFrom == RequestSource.Nitnem)
             {
                 if (_nitnemBani.Bookmark)
@@ -181,7 +182,6 @@ namespace KeertanPothi.Views
                 //CreateSimilarShabadToolbar();
                 CreateSharePopupToolbar();
             }
-
         }
 
         private void CreateNoteToolbar()
@@ -190,6 +190,16 @@ namespace KeertanPothi.Views
             itemKeertanMode.Text = "Text Note";
             itemKeertanMode.Order = ToolbarItemOrder.Secondary;
             //itemKeertanMode.Clicked += Note_Clicked;
+            ToolbarItems.Add(itemKeertanMode);
+        }
+
+        private void CreateSettingToolbar()
+        {
+            itemKeertanMode = new ToolbarItem();
+            itemKeertanMode.Text = "Settings";
+            itemKeertanMode.IconImageSource = ImageSource.FromResource("KeertanPothi.images.settings2.png");
+            itemKeertanMode.Order = ToolbarItemOrder.Primary;
+            itemKeertanMode.Clicked += menu_Clicked;
             ToolbarItems.Add(itemKeertanMode);
         }
 
@@ -203,7 +213,6 @@ namespace KeertanPothi.Views
             itemSimilar.IsEnabled = false;
             ToolbarItems.Add(itemSimilar);
         }
-
 
         private void CreateKeertanMode()
         {
@@ -707,6 +716,32 @@ namespace KeertanPothi.Views
                 Navigation.PushPopupAsync(settingsPopup);
             }
         }
+
+        private void QuickSettings(object sender, EventArgs e)
+        {
+            if (Util.PrefPunjabiVisible || Util.PrefEnglishVisible)
+            {
+                if (Util.PrefPunjabiVisible)
+                {
+                    SettingChanged(Util.SettingName.PunTranslationVisible, false);
+                    Util.PrefPunjabiVisible = false;
+                }
+
+                if (Util.PrefEnglishVisible)
+                {
+                    SettingChanged(Util.SettingName.EngTranslationVisible, false);
+                    Util.PrefEnglishVisible = false;
+                }
+            }
+            else
+            {
+                SettingChanged(Util.SettingName.PunTranslationVisible, true);
+                SettingChanged(Util.SettingName.EngTranslationVisible, true);
+                Util.PrefPunjabiVisible = true;
+                Util.PrefEnglishVisible = true;
+            }
+        }
+
 
         private void share_Clicked(object sender, EventArgs e)
         {
