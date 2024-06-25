@@ -4,6 +4,7 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using System.Threading.Tasks;
 using DBTest.Models;
+using KeertanPothi.Views;
 
 [assembly: ExportFont("gurbaniwebthick.ttf", Alias = "PunjabiBoldFont")]
 [assembly: ExportFont("PunjabiFont1.otf", Alias = "PunjabiFont")]
@@ -45,13 +46,13 @@ namespace KeertanPothi
                 try
                 {
                     int appDbVersion = Util.PrefCurrentDbVersion;
-                    //if (appDbVersion < Util.CurrentDbVersion)
-                    //{
+                    if (appDbVersion < Util.CurrentDbVersion)
+                    {
 
                         //Util.PrefCurrentDbVersion = Util.CurrentDbVersion;
                         //Util.RunScript();
                         Util.RunScriptProgressive();
-                    //}
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -64,6 +65,7 @@ namespace KeertanPothi
 
         protected override void OnStart()
         {
+   
         }
 
         protected override void OnSleep()
