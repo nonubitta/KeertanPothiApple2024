@@ -773,7 +773,7 @@ namespace KeertanPothi
             return @"SELECT P.POTHIID, P.name, P.createdon, COUNT(PS.shabadid) ShabadCount
 	                 FROM POTHI P
                      Left JOIN PothiShabad PS ON P.POTHIID = PS.PothiId  
-                     GROUP BY P.POTHIID, P.name, P.createdon";
+                     GROUP BY P.POTHIID, P.name, P.createdon ORDER BY P.createdon DESC";
         }
 
         internal static string GetAllPothisWithSortOrder()

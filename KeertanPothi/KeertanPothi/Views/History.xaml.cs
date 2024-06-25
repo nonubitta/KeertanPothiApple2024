@@ -31,6 +31,7 @@ namespace KeertanPothi.Views
             Theme theme = new Theme();
             versesObs?.ToList().ForEach(a => a.PageBgTheme = theme);
             BindingContext = theme;
+            Queries.CleanHistory();
             base.OnAppearing();
         }
 

@@ -86,6 +86,7 @@ namespace KeertanPothi
         internal class PothiText : StaticTextBase
         {
             public string RenameDelete { get; }
+            public string AddPothi { get; set; }
             public string NoPothisFound { get; }
             public string NewPothiNameSubject { get; }
             public string NewPothiNameMsg { get; }
@@ -93,15 +94,17 @@ namespace KeertanPothi
             {
                 if (IsPunjabi)
                 {
-                    RenameDelete = "* ਨਾਮ ਬਦਲਣ ਜਾਂ ਮਿਟਾਉਣ ਲਈ ਪੋਥੀ ਨੂੰ ਲੰਮੇ ਸਮੇਂ ਲਈ ਦਬਾਓ";
-                    NoPothisFound = "ਤੁਸੀਂ ਕੋਈ ਪੋਥੀ ਨਹੀਂ ਬਣਾਈ ਹੈ|" + Environment.NewLine + "ਨਵੀਂ ਪੋਥੀ ਬਣਾਉਣ ਲਈ," + Environment.NewLine + "ਸੱਜੇ ਤੋਂ ਉੱਪਰ ਦੇ ਪਲੱਸ (+) ਬਟਨ ਤੇ ਕਲਿਕ ਕਰੋ";
+                    RenameDelete = "ਨਾਮ ਬਦਲਣ ਜਾਂ ਮਿਟਾਉਣ ਲਈ ਪੋਥੀ ਨੂੰ ਖੱਬੇ ਪਾਸੇ ਸਵਾਈਪ ਕਰੋ";
+                    AddPothi = "ਨਵੀਂ ਪੋਥੀ ਬਣਾਉਣ ਲਈ," + Environment.NewLine + "ਸੱਜੇ ਤੋਂ ਉੱਪਰ ਦੇ ਪਲੱਸ (+) ਬਟਨ ਤੇ ਕਲਿਕ ਕਰੋ";
+                    NoPothisFound = "ਤੁਸੀਂ ਕੋਈ ਪੋਥੀ ਨਹੀਂ ਬਣਾਈ ਹੈ|" + Environment.NewLine + AddPothi;
                     NewPothiNameSubject = "ਨਵੀਂ ਪੋਥੀ ਬਣਾਓ";
                     NewPothiNameMsg = "ਨਵੀਂ ਪੋਥੀ ਦਾ ਨਾਮ";
                 }
                 else
                 {
-                    RenameDelete = "* Long press a pothi to rename or delete";
-                    NoPothisFound = "No pothis found." + Environment.NewLine + "Click on plus button in top right" + Environment.NewLine + "to create your first pothi.";
+                    RenameDelete = "Swipe left to rename or delete a pothi";
+                    AddPothi = "Click on plus button in top right" + Environment.NewLine + "to create your first pothi.";
+                    NoPothisFound = "No pothis found." + Environment.NewLine + AddPothi;
                     NewPothiNameSubject = "Add new Pothi";
                     NewPothiNameMsg = "Enter pothi name";
                 }

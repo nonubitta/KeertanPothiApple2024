@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using Acr.UserDialogs;
 using Rg.Plugins.Popup.Extensions;
 using Xamarin.Essentials;
+using static KeertanPothi.StaticText;
 
 namespace KeertanPothi.Views
 {
@@ -22,6 +23,7 @@ namespace KeertanPothi.Views
         SQLiteAsyncConnection _con;
         ObservableCollection<Pothi> PothiObs;
         StaticText.PothiText pothiText = new StaticText.PothiText();
+        List<Pothi> pothis;
         public KirtanPothiList()
         {
             BindingContext = new Theme();
@@ -30,23 +32,29 @@ namespace KeertanPothi.Views
             MessagingCenter.Subscribe<App, bool>((App)Application.Current, "PothisImported", (sender, arg) => {
                 PothisCreated(arg);
             });
-            LoadToolbars();
+            //LoadToolbars();
         }
 
-        private void LoadToolbars()
-        {
-            ToolbarItem itemAdd = new ToolbarItem();
-            itemAdd.IconImageSource = ImageSource.FromResource("KeertanPothi.images.addSmall.png");
-            itemAdd.Order = ToolbarItemOrder.Primary;
-            itemAdd.Clicked += AddPothi_Clicked;
-            ToolbarItems.Add(itemAdd);
+        //private void LoadToolbars()
+        //{
+        //    ToolbarItem itemHelp = new ToolbarItem();
+        //    itemHelp.IconImageSource = ImageSource.FromResource("KeertanPothi.images.help.png");
+        //    itemHelp.Order = ToolbarItemOrder.Primary;
+        //    itemHelp.Clicked += AddPothi_Clicked;
+        //    ToolbarItems.Add(itemHelp);
 
-            ToolbarItem itemShare = new ToolbarItem();
-            itemShare.IconImageSource = ImageSource.FromResource("KeertanPothi.images.actionMenu70.png");
-            itemShare.Order = ToolbarItemOrder.Primary;
-            itemShare.Clicked += ShareActionSheet_Clicked;
-            ToolbarItems.Add(itemShare);
-        }
+        //    ToolbarItem itemAdd = new ToolbarItem();
+        //    itemAdd.IconImageSource = ImageSource.FromResource("KeertanPothi.images.addSmall.png");
+        //    itemAdd.Order = ToolbarItemOrder.Primary;
+        //    itemAdd.Clicked += AddPothi_Clicked;
+        //    ToolbarItems.Add(itemAdd);
+
+        //    ToolbarItem itemShare = new ToolbarItem();
+        //    itemShare.IconImageSource = ImageSource.FromResource("KeertanPothi.images.actionMenu70.png");
+        //    itemShare.Order = ToolbarItemOrder.Primary;
+        //    itemShare.Clicked += ShareActionSheet_Clicked;
+        //    ToolbarItems.Add(itemShare);
+        //}
 
         protected override void OnDisappearing()
         {
@@ -56,7 +64,7 @@ namespace KeertanPothi.Views
 
         private async Task<bool> LoadPothis()
         {
-            List<Pothi> pothis = await _con.QueryAsync<Pothi>(Queries.GetAllPothis());
+            pothis = await _con.QueryAsync<Pothi>(Queries.GetAllPothis());
             foreach (Pothi p in pothis)
             {
                 List<PothiShabad> ps = await _con.QueryAsync<PothiShabad>($"Select * from PothiShabad where PothiId = {p.PothiId}");
@@ -92,7 +100,6 @@ namespace KeertanPothi.Views
             Theme theme = new Theme();
             PothiObs?.ToList().ForEach(a => a.PageBgTheme = theme);
             BindingContext = theme;
-            lblRenameDelete.Text = pothiText.RenameDelete;
             lblNoPothi.Text = pothiText.NoPothisFound;
         }
 
@@ -113,7 +120,7 @@ namespace KeertanPothi.Views
                         await Queries.ExportPothis(PothiObs.ToList(), true);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     Util.ShowRoast("Failed to Delete pothi");
                 }
@@ -254,8 +261,9 @@ namespace KeertanPothi.Views
         {
             const string export = "Export Pothis";
             const string import = "Import Pothis";
+            const string help = "Help";
             //const string backup = "Backup";
-            string action = await DisplayActionSheet("Export/Import", "Cancel", null, export, import);
+            string action = await DisplayActionSheet("Export/Import", "Cancel", null, export, import, help);
 
             switch (action)
             {
@@ -265,9 +273,33 @@ namespace KeertanPothi.Views
                 case import:
                     Import_Clicked(null, null);
                     break;
+                case help:
+                    Help_Clicked(null, null);
+                    break;
                 default:
                     break;
             }
+        }
+
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = string.Empty;
+            if (!string.IsNullOrEmpty(e.NewTextValue))
+                searchText = e.NewTextValue.ToUpper();
+                
+            var filteredList = pothis.Where(a => a.Name.ToUpper().Contains(searchText));
+            PothiObs = new ObservableCollection<Pothi>(filteredList);
+            lstPothi.ItemsSource = PothiObs;
+        }
+
+        private void Help_Clicked(object sender, EventArgs e)
+        {
+            UserDialogs.Instance.Alert(new AlertConfig
+            {
+                Message = "- " + pothiText.AddPothi + Environment.NewLine + "- " + pothiText.RenameDelete,
+                OkText = "OK",
+                Title = "Help"
+            });
         }
     }
 }

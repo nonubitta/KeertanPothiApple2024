@@ -5,29 +5,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              Title="Keertan Pothi"
-
              xmlns:local="clr-namespace:KeertanPothi.MarkupExtension"
-             x:Class="KeertanPothi.Views.KirtanPothiList" BackgroundColor="{Binding PageBg}">
-    <!--<NavigationPage.TitleView>
-         <StackLayout Margin="0" Padding="0,7,0,6" Spacing="10" Orientation="Horizontal">
-            <Label Text="Keertan Poth" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="Subtitle"
-                   FontAttributes="Bold" VerticalOptions="Center"></Label>
-             <ImageButton BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" HorizontalOptions="End" Clicked="AddPothi_Clicked"
-                          Source="{local:EmbeddedImage KeertanPothi.images.add.png}" ></ImageButton>
-            <ImageButton BackgroundColor="Transparent" HeightRequest="23" WidthRequest="23" HorizontalOptions="End" Clicked="ShareActionSheet_Clicked"
-                         Source="{local:EmbeddedImage KeertanPothi.images.actionMenuSmall.png}" ></ImageButton>
-        </StackLayout>
-    </NavigationPage.TitleView>-->
+             x:Class="KeertanPothi.Views.KirtanPothiList" 
+             BackgroundColor="{Binding PageBg}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="AddPothi" IconImageSource="{local:EmbeddedImage KeertanPothi.images.add.png}" Clicked="AddPothi_Clicked"></ToolbarItem>
+        <ToolbarItem Text="SubMenu" Clicked="ShareActionSheet_Clicked" IconImageSource="{local:EmbeddedImage KeertanPothi.images.actionMenu70.png}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
     <StackLayout Padding="10, 10, 10, 10">
         <Label TextColor="{Binding PunjabiTranslationColor}" FontSize="Medium" Margin="10,0,10,0" HorizontalOptions="CenterAndExpand" 
                VerticalOptions="CenterAndExpand" x:Name="lblNoPothi" HorizontalTextAlignment="Center"
                Text="No pothis found.&#10;Click on plus button in top right&#10;to create your first pothi." IsVisible="False"></Label>
+            <SearchBar StyleClass="NoBorder" BackgroundColor="{Binding PageBg}" FontSize="16" TextColor="{Binding FontColor}" 
+                       PlaceholderColor="{Binding FontColor}" Placeholder="Search Pothis" TextChanged="SearchBar_TextChanged"></SearchBar>
         <ListView VerticalOptions="FillAndExpand" BackgroundColor="Transparent" x:Name="lstPothi" RowHeight="70"
                   ItemSelected="lstPothi_ItemSelected" SeparatorColor="Black">
-            <ListView.Header>
-                <Label x:Name="lblRenameDelete" Text="* Swipe from right on a pothi to rename or delete" FontSize="Micro" FontAttributes="Italic"
-                        TextColor="{Binding PunjabiTranslationColor}" HorizontalOptions="CenterAndExpand"></Label>
-            </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
