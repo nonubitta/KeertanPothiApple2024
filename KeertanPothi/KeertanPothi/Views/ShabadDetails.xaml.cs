@@ -15,7 +15,6 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using KeertanPothi.model;
 using Acr.UserDialogs;
-using Plugin.SimpleAudioPlayer;
 
 namespace KeertanPothi.Views
 {
@@ -36,7 +35,6 @@ namespace KeertanPothi.Views
         List<PothiShabad> pothiShabadList;
         private NitnemBani _nitnemBani;
         double lastYPos = 0;
-        ISimpleAudioPlayer AudioPlayer;
         ToolbarItem itemPlay = null;
         ToolbarItem itemBookmark = null;
         ToolbarItem itemKeertanMode = null;
@@ -164,13 +162,6 @@ namespace KeertanPothi.Views
                 {
                     CreateBookmarkToolbar();
                 }
-                AudioPlayer = CrossSimpleAudioPlayer.Current;
-                try
-                {
-                    AudioPlayer.Load(_nitnemBani.BaniId + ".mp3");
-                    CreatePlayToolbar();
-                }
-                catch { }
                 if (_nitnemBani.Id == 18) //Asa ki vaar
                 {
                     CreateKeertanMode();
@@ -216,12 +207,26 @@ namespace KeertanPothi.Views
 
         private void CreateKeertanMode()
         {
-            itemKeertanMode = new ToolbarItem();
-            itemKeertanMode.Text = "Keertan";
-            itemKeertanMode.IconImageSource = ImageSource.FromResource("KeertanPothi.images.harmonium.png");
-            itemKeertanMode.Order = ToolbarItemOrder.Primary;
-            itemKeertanMode.Clicked += KeertanMode_Clicked;
-            ToolbarItems.Add(itemKeertanMode);
+            ToolbarItem searchBtn = new ToolbarItem();
+            searchBtn.Text = "Search";
+            searchBtn.IconImageSource = ImageSource.FromResource("KeertanPothi.images.search.png");
+            searchBtn.Order = ToolbarItemOrder.Primary;
+            searchBtn.Clicked += SearchShabad_Clicked;
+            ToolbarItems.Add(searchBtn);
+
+            ToolbarItem pothiList = new ToolbarItem();
+            pothiList.Text = "Pothi list";
+            pothiList.IconImageSource = ImageSource.FromResource("KeertanPothi.images.Book.png");
+            pothiList.Order = ToolbarItemOrder.Primary;
+            pothiList.Clicked += PothiList_Clicked;
+            ToolbarItems.Add(pothiList);
+
+            //itemKeertanMode = new ToolbarItem();
+            //itemKeertanMode.Text = "Keertan";
+            //itemKeertanMode.IconImageSource = ImageSource.FromResource("KeertanPothi.images.harmonium.png");
+            //itemKeertanMode.Order = ToolbarItemOrder.Primary;
+            //itemKeertanMode.Clicked += KeertanMode_Clicked;
+            //ToolbarItems.Add(itemKeertanMode);
         }
 
         private void CreateBookmarkToolbar()
@@ -232,16 +237,6 @@ namespace KeertanPothi.Views
             itemBookmark.Order = ToolbarItemOrder.Primary;
             itemBookmark.Clicked += Bookmark_Clicked;
             ToolbarItems.Add(itemBookmark);
-        }
-
-        private void CreatePlayToolbar()
-        {
-            itemPlay = new ToolbarItem();
-            itemPlay.Text = "Play";
-            itemPlay.IconImageSource = ImageSource.FromResource("KeertanPothi.images.Play.png");
-            itemPlay.Order = ToolbarItemOrder.Primary;
-            itemPlay.Clicked += Play_Clicked;
-            ToolbarItems.Add(itemPlay);
         }
 
         private void CreateSharePopupToolbar()
@@ -291,14 +286,13 @@ namespace KeertanPothi.Views
             if (lblScripture2 != null && string.IsNullOrEmpty(Title))
                 Title = lblScripture2.Text;
 
-            Util.SaveLastShabad(ShabadId, SelectedVerseId, PothiId, AngNo, RequestFrom.ToString());
+           // Util.SaveLastShabad(ShabadId, SelectedVerseId, PothiId, AngNo, RequestFrom.ToString());
             base.OnAppearing();
         }
 
         protected override void OnDisappearing()
         {
-            AudioPlayer?.Stop();
-            Util.RemoveLastShabad();
+            //Util.RemoveLastShabad();
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<App, object>(this, "NoteUpdated");
         }
@@ -943,20 +937,6 @@ namespace KeertanPothi.Views
             await Navigation.PopAsync(true);
         }
 
-        private void Play_Clicked(object sender, EventArgs e)
-        {
-            if (AudioPlayer.IsPlaying)
-            {
-                AudioPlayer.Pause();
-                itemPlay.IconImageSource = ImageSource.FromResource("KeertanPothi.images.Play.png");
-            }
-            else
-            {
-                AudioPlayer.Play();
-                itemPlay.IconImageSource = ImageSource.FromResource("KeertanPothi.images.Pause.png");
-            }
-        }
-
         private void Bookmark_Clicked(object sender, EventArgs e)
         {
             NitnemBookmarkPopup bookmarkPopup = new NitnemBookmarkPopup(_nitnemBani.BaniId);
@@ -1009,6 +989,14 @@ namespace KeertanPothi.Views
         private void KeertanMode_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new AsaDiVaar());
+        }
+        private void SearchShabad_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Search());
+        }
+        private void PothiList_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new KirtanPothiList());
         }
 
         //private void Note_Clicked(object sender, EventArgs e)
