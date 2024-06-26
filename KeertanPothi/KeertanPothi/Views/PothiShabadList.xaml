@@ -10,7 +10,7 @@
         <ToolbarItem Text="Edit" x:Name="btnMove" Clicked="Edit_Clicked"></ToolbarItem>
         <!--<ToolbarItem Text="Share Pothi" x:Name="share" Order="Secondary" Clicked="share_Clicked"></ToolbarItem>-->
     </ContentPage.ToolbarItems>
-    <StackLayout>
+    <StackLayout Padding="20">
         <StackLayout IsVisible="False" x:Name="slNoShabad" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
             <Label x:Name="lblNoShabadAdded1" HorizontalOptions="CenterAndExpand" FontSize="Subtitle" TextColor="{Binding FontColor}"
                    Text="You haven't added any shabad to this pothi."></Label>

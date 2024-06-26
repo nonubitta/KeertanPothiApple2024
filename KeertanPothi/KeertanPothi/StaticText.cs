@@ -31,7 +31,7 @@ namespace KeertanPothi
                     MenuRaagList = "ਰਾਗ  ਸੂਚੀ";
                     MenuHistory = "ਖੋਜੇ ਸ਼ਬਦ";
                     MenuHelpContact = "ਮਦਦ/ਸੰਪਰਕ";
-                    FontSize = 21;
+                    FontSize = 26;
                 }
                 else
                 {
@@ -43,7 +43,7 @@ namespace KeertanPothi
                     MenuRaagList = "Raag List";
                     MenuHistory = "History";
                     MenuHelpContact = "Help/Contact";
-                    FontSize = 18;
+                    FontSize = 22;
                 }
             }
         }

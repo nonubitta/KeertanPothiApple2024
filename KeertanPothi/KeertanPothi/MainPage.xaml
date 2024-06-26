@@ -16,11 +16,10 @@
                         <TapGestureRecognizer Tapped="Header_Tapped"></TapGestureRecognizer>
                     </StackLayout.GestureRecognizers>-->
                     <Label VerticalOptions="Center" HorizontalOptions="Center" TextColor="#ffffff" 
-                           FontFamily="PunjabiFont" Text="kIrqnu poQI" FontSize="34"></Label>
+                           FontFamily="PunjabiFont" Text="kIrqnu poQI" FontSize="38"></Label>
                     <Label VerticalOptions="Center" HorizontalOptions="Center" TextColor="#ffffff" 
-                           Text="Keertan Pothi" FontSize="18"></Label>
-                    <Label VerticalOptions="Center" HorizontalOptions="Center" TextColor="#ffffff" 
-                           Text="(Beta)" FontSize="Micro"></Label>
+                           Text="Keertan Pothi" FontSize="22"></Label>
+                 
                 </StackLayout>
                 <StackLayout VerticalOptions="StartAndExpand" x:Name="slMenuBg">
                     <ListView BackgroundColor="Transparent" VerticalOptions="FillAndExpand" RowHeight="60" x:Name="lstMenu" ItemSelected="lstMenu_ItemSelected"
