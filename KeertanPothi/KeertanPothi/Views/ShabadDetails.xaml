@@ -7,7 +7,9 @@
              xmlns:local="clr-namespace:KeertanPothi.MarkupExtension"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:tb="clr-namespace:KeertanPothi.Controls"
-             x:Class="KeertanPothi.Views.ShabadDetails" BackgroundColor="{Binding PageBg}" >
+             x:Class="KeertanPothi.Views.ShabadDetails" BackgroundColor="{Binding PageBg}"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.PrefersHomeIndicatorAutoHidden="true">
 
     <!--xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
   ios:Page.PrefersHomeIndicatorAutoHidden="true"-->
@@ -78,9 +80,9 @@
                     </StackLayout>
             </SwipeView.Content>
         </SwipeView>
-        <StackLayout IsVisible="True" x:Name="EditToolbar" BackgroundColor="{Binding HeaderColor}"  Opacity="1" AbsoluteLayout.LayoutBounds="0,1,1,60" 
+        <StackLayout IsVisible="True" x:Name="EditToolbar" BackgroundColor="{Binding HeaderColor}"  Opacity="1" AbsoluteLayout.LayoutBounds="0,1,1,52" 
                          AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional" Orientation="Horizontal" 
-                         VerticalOptions="End" Padding="15,0,15,15">
+                         VerticalOptions="End" Padding="20,0,20,10">
             <Grid HorizontalOptions="FillAndExpand" Padding="0,0,0,0" RowDefinitions="*" 
                     ColumnDefinitions="*,*,*,*,*">
 
@@ -105,7 +107,7 @@
         <ImageButton IsVisible="False" BackgroundColor="Transparent" x:Name="btnRestore" Margin="0"
                      Padding="0" Clicked="btnRestore_Clicked" 
                                   AbsoluteLayout.LayoutFlags="PositionProportional"
-                                 AbsoluteLayout.LayoutBounds="0.5,1,70,55" Source="{local:EmbeddedImage KeertanPothi.images.Toolbar.png}">
+                                 AbsoluteLayout.LayoutBounds="0.5,1,70,45" Source="{local:EmbeddedImage KeertanPothi.images.Toolbar.png}">
                     </ImageButton>
     </AbsoluteLayout>
 </ContentPage>
