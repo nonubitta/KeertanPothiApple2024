@@ -1,0 +1,10 @@
+update DbVersion set version = 15 WHERE VERSION < 15;
+
+INSERT INTO Writer (WriterID,WriterEnglish,WriterGurmukhi) 
+	select 55, '', '' where not EXISTS (SELECT 1 from Writer WHERE writerid = 55); 
+INSERT INTO BaniName (Id,PunjabiName,EnglishName,IsVisible,Bookmark) 
+	Select '30', 'Ardws', 'Ardaas', 1, 0 
+WHERE Not EXISTS (SELECT 1 from BaniName where id = 30); 
+ALTER TABLE BaniName Add Column SortBy Integer;
+Update BaniName Set SortBy = Id * 10 Where SortBy is null;
+Update BaniName Set SortBy = 75 Where Id = 30 and SortBy = 300;
