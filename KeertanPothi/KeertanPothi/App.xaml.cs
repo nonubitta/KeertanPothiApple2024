@@ -16,6 +16,7 @@ namespace KeertanPothi
     {
         public App()
         {
+            //Device.BeginInvokeOnMainThread(() => UserDialogs.Instance.Alert(title: title, message: message, okText: buttonText));
             DeviceDisplay.KeepScreenOn = true;
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzczMDA4QDMxMzgyZTM0MmUzME8raE9BVW8xVXlQV256bGZUNXJXV1BoaGRDSlFITWNsenUydjErandsQVE9");
             InitializeComponent();
