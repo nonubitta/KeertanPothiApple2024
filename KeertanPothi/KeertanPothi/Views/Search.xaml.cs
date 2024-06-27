@@ -28,11 +28,11 @@ namespace KeertanPothi.Views
 			ToggleKeyboard(true);
 		}
 
-		private async void LoadHistory()
-		{
-			List<VerseSearch> verseSearch = await _con.QueryAsync<VerseSearch>(Queries.GetShabadHistory(5));
-			//lstHistory.ItemsSource = verseSearch;
-		}
+		//private async void LoadHistory()
+		//{
+		//	List<VerseSearch> verseSearch = await _con.QueryAsync<VerseSearch>(Queries.GetShabadHistory(5));
+		//	lstHistory.ItemsSource = verseSearch;
+		//}
 
         private async void lstHistory_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
@@ -51,7 +51,7 @@ namespace KeertanPothi.Views
 			BindingContext = theme;
 			base.OnAppearing();
 			SetSearchOptions();
-			LoadHistory();
+			//LoadHistory();
 
         }
 
