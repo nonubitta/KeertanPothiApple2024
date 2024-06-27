@@ -485,6 +485,28 @@ namespace KeertanPothi
             append += DateTime.Now + "\r\n";
             SaveFile(LogFileName, append + text, true);
         }
+        public static string ReadTxtFile(string fileName)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            string resourceName = $"KeertanPothi.DB.StaticBani.{fileName}";
+            string result = string.Empty;
+
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                if (stream == null)
+                {
+                    result = string.Empty;
+                }
+                else
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        result = reader.ReadToEnd();
+                    }
+                }
+                return result;
+            }
+        }
 
         public async static Task<string> GetPothiJson(Pothi pothi)
         {
